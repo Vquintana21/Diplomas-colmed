@@ -1,0 +1,380 @@
+/**
+ * Estilos personalizados - Sistema de Carga de Diplomas
+ */
+
+/* ============================================
+   VARIABLES Y GENERALES
+   ============================================ */
+:root {
+    --primary-gradient: linear-gradient(135deg, #667eea 0%, #764ba2 100%);
+    --success-gradient: linear-gradient(135deg, #11998e 0%, #38ef7d 100%);
+    --danger-gradient: linear-gradient(135deg, #eb3349 0%, #f45c43 100%);
+}
+
+body {
+    font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
+}
+
+/* ============================================
+   HEADER CON GRADIENTE
+   ============================================ */
+.bg-gradient-primary {
+    background: var(--primary-gradient) !important;
+}
+
+/* ============================================
+   INDICADOR DE PASOS
+   ============================================ */
+.steps-container {
+    padding: 20px 0;
+}
+
+.step {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    position: relative;
+}
+
+.step-number {
+    width: 50px;
+    height: 50px;
+    border-radius: 50%;
+    background: #e9ecef;
+    color: #6c757d;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    font-size: 1.25rem;
+    font-weight: 600;
+    transition: all 0.3s ease;
+    border: 3px solid #e9ecef;
+}
+
+.step-label {
+    margin-top: 10px;
+    font-size: 0.85rem;
+    color: #6c757d;
+    font-weight: 500;
+    transition: all 0.3s ease;
+}
+
+.step.active .step-number {
+    background: var(--primary-gradient);
+    color: white;
+    border-color: #667eea;
+    box-shadow: 0 4px 15px rgba(102, 126, 234, 0.4);
+}
+
+.step.active .step-label {
+    color: #667eea;
+    font-weight: 600;
+}
+
+.step.completed .step-number {
+    background: #198754;
+    color: white;
+    border-color: #198754;
+}
+
+.step.completed .step-label {
+    color: #198754;
+}
+
+.step-line {
+    width: 100px;
+    height: 3px;
+    background: #e9ecef;
+    margin: 25px 15px 0 15px;
+    border-radius: 2px;
+    transition: all 0.3s ease;
+}
+
+.step-line.active {
+    background: #198754;
+}
+
+/* Responsive pasos */
+@media (max-width: 576px) {
+    .step-line {
+        width: 40px;
+    }
+    
+    .step-number {
+        width: 40px;
+        height: 40px;
+        font-size: 1rem;
+    }
+    
+    .step-label {
+        font-size: 0.75rem;
+    }
+}
+
+/* ============================================
+   ZONA DE UPLOAD
+   ============================================ */
+.upload-zone {
+    border: 3px dashed #dee2e6;
+    border-radius: 15px;
+    padding: 60px 30px;
+    text-align: center;
+    cursor: pointer;
+    transition: all 0.3s ease;
+    background: #f8f9fa;
+}
+
+.upload-zone:hover {
+    border-color: #667eea;
+    background: rgba(102, 126, 234, 0.05);
+}
+
+.upload-zone.dragover {
+    border-color: #667eea;
+    background: rgba(102, 126, 234, 0.1);
+    transform: scale(1.02);
+}
+
+.upload-zone .upload-icon {
+    font-size: 4rem;
+    color: #667eea;
+    margin-bottom: 15px;
+}
+
+.upload-zone h5 {
+    color: #333;
+    margin-bottom: 5px;
+}
+
+/* ============================================
+   TABLA DE PREVIEW
+   ============================================ */
+#tablaPreview {
+    font-size: 0.9rem;
+}
+
+#tablaPreview thead th {
+    background: #343a40;
+    color: white;
+    font-weight: 600;
+    border: none;
+    padding: 12px 15px;
+    white-space: nowrap;
+}
+
+#tablaPreview tbody td {
+    padding: 12px 15px;
+    vertical-align: middle;
+}
+
+#tablaPreview tbody tr.row-valid {
+    background: #d1e7dd;
+}
+
+#tablaPreview tbody tr.row-valid:hover {
+    background: #badbcc;
+}
+
+#tablaPreview tbody tr.row-error {
+    background: #f8d7da;
+}
+
+#tablaPreview tbody tr.row-error:hover {
+    background: #f1aeb5;
+}
+
+/* Truncar texto largo */
+.text-truncate-cell {
+    max-width: 200px;
+    white-space: nowrap;
+    overflow: hidden;
+    text-overflow: ellipsis;
+}
+
+/* ============================================
+   RESUMEN DE CARGA
+   ============================================ */
+.resumen-cards {
+    display: flex;
+    gap: 20px;
+    margin-bottom: 20px;
+}
+
+.resumen-card {
+    flex: 1;
+    padding: 25px 20px;
+    border-radius: 15px;
+    text-align: center;
+    color: white;
+}
+
+.resumen-card.total {
+    background: var(--primary-gradient);
+}
+
+.resumen-card.validos {
+    background: var(--success-gradient);
+}
+
+.resumen-card.errores {
+    background: var(--danger-gradient);
+}
+
+.resumen-card.warning {
+    background: linear-gradient(135deg, #f39c12 0%, #e67e22 100%);
+}
+
+.resumen-card .numero {
+    font-size: 2.5rem;
+    font-weight: 700;
+    line-height: 1;
+    margin-bottom: 5px;
+}
+
+.resumen-card .texto {
+    font-size: 0.9rem;
+    opacity: 0.9;
+}
+
+@media (max-width: 576px) {
+    .resumen-cards {
+        flex-direction: column;
+    }
+    
+    .resumen-card .numero {
+        font-size: 2rem;
+    }
+}
+
+/* ============================================
+   BADGES Y ESTADOS
+   ============================================ */
+.badge-estado {
+    padding: 6px 12px;
+    border-radius: 20px;
+    font-size: 0.75rem;
+    font-weight: 600;
+}
+
+/* ============================================
+   RESULTADO FINAL
+   ============================================ */
+.resultado-exito {
+    text-align: center;
+    padding: 40px;
+}
+
+.resultado-exito .icono {
+    font-size: 5rem;
+    color: #198754;
+    margin-bottom: 20px;
+}
+
+.resultado-exito h3 {
+    color: #198754;
+    margin-bottom: 15px;
+}
+
+.resultado-error {
+    text-align: center;
+    padding: 40px;
+}
+
+.resultado-error .icono {
+    font-size: 5rem;
+    color: #dc3545;
+    margin-bottom: 20px;
+}
+
+.resultado-error h3 {
+    color: #dc3545;
+    margin-bottom: 15px;
+}
+
+/* ============================================
+   ANIMACIONES
+   ============================================ */
+@keyframes fadeIn {
+    from {
+        opacity: 0;
+        transform: translateY(10px);
+    }
+    to {
+        opacity: 1;
+        transform: translateY(0);
+    }
+}
+
+.fade-in {
+    animation: fadeIn 0.3s ease;
+}
+
+/* ============================================
+   BOTONES
+   ============================================ */
+.btn-lg {
+    padding: 12px 30px;
+    font-weight: 600;
+}
+
+.btn-primary {
+    background: var(--primary-gradient);
+    border: none;
+}
+
+.btn-primary:hover {
+    background: linear-gradient(135deg, #5a6fd6 0%, #6a4190 100%);
+    transform: translateY(-2px);
+    box-shadow: 0 5px 20px rgba(102, 126, 234, 0.4);
+}
+
+.btn-success {
+    background: var(--success-gradient);
+    border: none;
+}
+
+.btn-success:hover:not(:disabled) {
+    background: linear-gradient(135deg, #0f8a80 0%, #32d970 100%);
+    transform: translateY(-2px);
+    box-shadow: 0 5px 20px rgba(17, 153, 142, 0.4);
+}
+
+/* ============================================
+   CARDS
+   ============================================ */
+.card {
+    border-radius: 15px;
+}
+
+.rounded-4 {
+    border-radius: 20px !important;
+}
+
+/* ============================================
+   TOOLTIPS PERSONALIZADOS
+   ============================================ */
+.error-tooltip {
+    color: #dc3545;
+    font-size: 0.8rem;
+}
+
+/* ============================================
+   SCROLLBAR PERSONALIZADO
+   ============================================ */
+.table-responsive::-webkit-scrollbar {
+    height: 8px;
+}
+
+.table-responsive::-webkit-scrollbar-track {
+    background: #f1f1f1;
+    border-radius: 4px;
+}
+
+.table-responsive::-webkit-scrollbar-thumb {
+    background: #c1c1c1;
+    border-radius: 4px;
+}
+
+.table-responsive::-webkit-scrollbar-thumb:hover {
+    background: #a1a1a1;
+}
