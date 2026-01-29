@@ -28,45 +28,7 @@ $conn->close();
 <body class="bg-light" data-pagina="carga-diplomas">
 
     <!-- Navbar -->
-    <nav class="navbar navbar-expand-lg navbar-dark navbar-institucional">
-        <div class="container">
-            <a class="navbar-brand" href="index.php">
-                <i class="bi bi-file-earmark-spreadsheet me-2"></i>
-                Carga Masiva de Diplomas
-            </a>
-            <div class="d-flex gap-2 align-items-center">
-                <?php if ($usuario['rol'] === 'admin'): ?>
-                <a href="convocatorias.php" class="btn btn-outline-light btn-sm">
-                    <i class="bi bi-folder me-1"></i>
-                    Convocatorias
-                </a>
-                <?php endif; ?>
-                <a href="listado.php" class="btn btn-outline-light btn-sm">
-                    <i class="bi bi-list-ul me-1"></i>
-                    Listado
-                </a>
-                <a href="validador.php" class="btn btn-outline-light btn-sm">
-                    <i class="bi bi-patch-check me-1"></i>
-                    Validador
-                </a>
-                <div class="dropdown">
-                    <button class="btn btn-light btn-sm dropdown-toggle" type="button" data-bs-toggle="dropdown">
-                        <i class="bi bi-person-circle me-1"></i>
-                        <?php echo htmlspecialchars($usuario['nombre']); ?>
-                    </button>
-                    <ul class="dropdown-menu dropdown-menu-end">
-                        <li><span class="dropdown-item-text text-muted small">@<?php echo htmlspecialchars($usuario['username']); ?></span></li>
-                        <li><hr class="dropdown-divider"></li>
-                        <?php if ($usuario['rol'] === 'admin'): ?>
-                        <li><a class="dropdown-item" href="admin-usuarios.php"><i class="bi bi-person-gear me-2"></i>Usuarios Permitidos</a></li>
-                        <?php endif; ?>
-                        <li><a class="dropdown-item" href="cambiar-password.php"><i class="bi bi-key me-2"></i>Cambiar Contraseña</a></li>
-                        <li><a class="dropdown-item text-danger" href="logout.php"><i class="bi bi-box-arrow-right me-2"></i>Cerrar Sesión</a></li>
-                    </ul>
-                </div>
-            </div>
-        </div>
-    </nav>
+    <?php include 'nav.php'; ?>
 
     <div class="container py-5">
         

@@ -63,46 +63,7 @@ if ($result_count) {
     </style>
 </head>
 <body data-pagina="convocatorias">
-    <nav class="navbar navbar-expand-lg navbar-institucional">
-        <div class="container">
-            <a class="navbar-brand" href="index.php">
-                <i class="bi bi-award"></i> Sistema de Diplomas
-            </a>
-            <button class="navbar-toggler" type="button" data-bs-toggle="collapse" data-bs-target="#navbarNav">
-                <span class="navbar-toggler-icon"></span>
-            </button>
-            <div class="collapse navbar-collapse" id="navbarNav">
-                <ul class="navbar-nav me-auto">
-                    <li class="nav-item">
-                        <a class="nav-link" href="index.php"><i class="bi bi-cloud-upload"></i> Cargar</a>
-                    </li>
-                    <li class="nav-item">
-                        <a class="nav-link active" href="convocatorias.php"><i class="bi bi-folder"></i> Convocatorias</a>
-                    </li>
-                    <li class="nav-item">
-                        <a class="nav-link" href="listado.php"><i class="bi bi-list-ul"></i> Listado</a>
-                    </li>
-                    <?php if ($_SESSION['usuario_rol'] === 'admin'): ?>
-                    <li class="nav-item">
-                        <a class="nav-link" href="admin-usuarios.php"><i class="bi bi-people"></i> Usuarios</a>
-                    </li>
-                    <?php endif; ?>
-                </ul>
-                <ul class="navbar-nav">
-                    <li class="nav-item dropdown">
-                        <a class="nav-link dropdown-toggle" href="#" data-bs-toggle="dropdown">
-                            <i class="bi bi-person-circle"></i> <?php echo htmlspecialchars($_SESSION['usuario_nombre']); ?>
-                        </a>
-                        <ul class="dropdown-menu dropdown-menu-end">
-                            <li><a class="dropdown-item" href="cambiar-password.php"><i class="bi bi-key"></i> Cambiar Contraseña</a></li>
-                            <li><hr class="dropdown-divider"></li>
-                            <li><a class="dropdown-item" href="logout.php"><i class="bi bi-box-arrow-right"></i> Cerrar Sesión</a></li>
-                        </ul>
-                    </li>
-                </ul>
-            </div>
-        </div>
-    </nav>
+    <?php include 'nav.php'; ?>
 
     <div class="container py-4">
         <div class="d-flex justify-content-between align-items-center mb-4">

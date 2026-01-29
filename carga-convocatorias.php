@@ -65,33 +65,7 @@ $conn->close();
 <body class="bg-light" data-pagina="carga-convocatorias">
 
     <!-- Navbar -->
-    <nav class="navbar navbar-expand-lg navbar-institucional">
-        <div class="container">
-            <a class="navbar-brand" href="carga-convocatorias.php">
-                <i class="bi bi-folder-plus me-2"></i>
-                Carga Masiva de Convocatorias
-            </a>
-            <div class="d-flex gap-2 align-items-center">
-                <a href="convocatorias.php" class="btn btn-outline-light btn-sm">
-                    <i class="bi bi-arrow-left me-1"></i>
-                    Volver a Convocatorias
-                </a>
-                <a href="index.php" class="btn btn-outline-light btn-sm">
-                    <i class="bi bi-house me-1"></i>
-                    Inicio
-                </a>
-                <div class="dropdown">
-                    <button class="btn btn-light btn-sm dropdown-toggle" type="button" data-bs-toggle="dropdown">
-                        <i class="bi bi-person-circle me-1"></i>
-                        <?php echo htmlspecialchars($usuario['nombre']); ?>
-                    </button>
-                    <ul class="dropdown-menu dropdown-menu-end">
-                        <li><a class="dropdown-item text-danger" href="logout.php"><i class="bi bi-box-arrow-right me-2"></i>Cerrar Sesión</a></li>
-                    </ul>
-                </div>
-            </div>
-        </div>
-    </nav>
+    <?php include 'nav.php'; ?>
 
     <div class="container py-4">
         

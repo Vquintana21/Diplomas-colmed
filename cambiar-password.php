@@ -117,18 +117,7 @@ if ($_SERVER['REQUEST_METHOD'] === 'POST') {
 <body data-pagina="cambiar-password">
 
     <!-- Navbar -->
-    <nav class="navbar navbar-institucional">
-        <div class="container">
-            <a class="navbar-brand" href="index.php">
-                <i class="bi bi-key me-2"></i>
-                Cambiar Contraseña
-            </a>
-            <a href="index.php" class="btn btn-outline-light btn-sm">
-                <i class="bi bi-arrow-left me-1"></i>
-                Volver
-            </a>
-        </div>
-    </nav>
+    <?php include 'nav.php'; ?>
 
     <div class="container py-5">
         <div class="row justify-content-center">

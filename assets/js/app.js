@@ -193,8 +193,8 @@
         var resumenCarga = document.getElementById('resumenCarga');
         var btnConfirmar = document.getElementById('btnConfirmar');
         
-        // Debug: mostrar qué elementos existen
-        // console.log('Elementos encontrados:', {
+        /* Debug: mostrar qué elementos existen
+        console.log('Elementos encontrados:', {
             step1: !!step1,
             step2: !!step2,
             stepLine: !!stepLine,
@@ -205,7 +205,7 @@
             opcionesCarga: !!opcionesCarga,
             resumenCarga: !!resumenCarga,
             btnConfirmar: !!btnConfirmar
-        });
+        }); */
         
         // Verificar elementos críticos
         if (!seccionPreview) {
