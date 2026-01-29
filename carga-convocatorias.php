@@ -32,121 +32,40 @@ $conn->close();
     <title>Carga Masiva de Convocatorias</title>
     <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.2/dist/css/bootstrap.min.css" rel="stylesheet">
     <link href="https://cdn.jsdelivr.net/npm/bootstrap-icons@1.11.1/font/bootstrap-icons.css" rel="stylesheet">
-    <link href="assets/css/custom.css" rel="stylesheet">
+    <!-- Estilos Institucionales -->
+    <link href="assets/css/styles.css" rel="stylesheet">
     <style>
-        :root {
-            --primary-gradient: linear-gradient(135deg, #667eea 0%, #764ba2 100%);
-            --success-gradient: linear-gradient(135deg, #11998e 0%, #38ef7d 100%);
-        }
-        
-        .upload-zone {
-            border: 3px dashed #dee2e6;
-            border-radius: 15px;
-            padding: 50px 30px;
-            text-align: center;
-            transition: all 0.3s ease;
-            cursor: pointer;
-            background: #fafafa;
-        }
-        
-        .upload-zone:hover, .upload-zone.dragover {
-            border-color: #667eea;
-            background: rgba(102, 126, 234, 0.05);
-        }
-        
-        .upload-zone .upload-icon {
-            font-size: 4rem;
-            color: #667eea;
-            margin-bottom: 15px;
-        }
-        
-        .card-header-custom {
-            background: var(--primary-gradient);
-            color: white;
-        }
-        
-        .table-preview {
-            font-size: 0.9rem;
-        }
-        
+        .table-preview { font-size: 0.9rem; }
         .table-preview th {
-            background: #343a40;
+            background: var(--color-secundario);
             color: white;
             font-weight: 600;
             position: sticky;
             top: 0;
         }
-        
-        .badge-estado-valido { background-color: #28a745; }
+        .badge-estado-valido { background-color: var(--color-exito); }
         .badge-estado-error { background-color: #dc3545; }
-        
         .stats-box {
             padding: 15px;
-            border-radius: 10px;
+            border-radius: var(--radio-medio);
             text-align: center;
             color: white;
         }
-        
-        .stats-box.total { background: var(--primary-gradient); }
-        .stats-box.validos { background: var(--success-gradient); }
+        .stats-box.total { background: var(--gradiente-primario); }
+        .stats-box.validos { background: var(--gradiente-exito); }
         .stats-box.errores { background: linear-gradient(135deg, #eb3349 0%, #f45c43 100%); }
-        
-        .stats-box .numero {
-            font-size: 2rem;
-            font-weight: 700;
-        }
-        
+        .stats-box .numero { font-size: 2rem; font-weight: 700; }
         .codigo-base-preview {
             font-family: 'Courier New', monospace;
             font-weight: bold;
-            color: #1a5276;
-        }
-        
-        .step-indicator {
-            display: flex;
-            justify-content: center;
-            gap: 10px;
-            margin-bottom: 30px;
-        }
-        
-        .step-indicator .step {
-            width: 40px;
-            height: 40px;
-            border-radius: 50%;
-            background: #e0e0e0;
-            color: #999;
-            display: flex;
-            align-items: center;
-            justify-content: center;
-            font-weight: 600;
-        }
-        
-        .step-indicator .step.active {
-            background: var(--primary-gradient);
-            color: white;
-        }
-        
-        .step-indicator .step.completed {
-            background: var(--success-gradient);
-            color: white;
-        }
-        
-        .step-indicator .line {
-            width: 60px;
-            height: 3px;
-            background: #e0e0e0;
-            align-self: center;
-        }
-        
-        .step-indicator .line.active {
-            background: var(--success-gradient);
+            color: var(--color-primario);
         }
     </style>
 </head>
-<body class="bg-light">
-    
+<body class="bg-light" data-pagina="carga-convocatorias">
+
     <!-- Navbar -->
-    <nav class="navbar navbar-expand-lg navbar-dark" style="background: var(--primary-gradient);">
+    <nav class="navbar navbar-expand-lg navbar-institucional">
         <div class="container">
             <a class="navbar-brand" href="carga-convocatorias.php">
                 <i class="bi bi-folder-plus me-2"></i>
@@ -179,7 +98,7 @@ $conn->close();
         <div id="alertaGlobal"></div>
         
         <div class="card shadow-lg border-0 rounded-4">
-            <div class="card-header card-header-custom py-3">
+            <div class="card-header card-header-institucional py-3">
                 <div class="row align-items-center">
                     <div class="col">
                         <h4 class="mb-1">
@@ -447,7 +366,7 @@ $conn->close();
     <div class="modal fade" id="modalDetalle" tabindex="-1">
         <div class="modal-dialog modal-lg">
             <div class="modal-content">
-                <div class="modal-header" style="background: var(--primary-gradient); color: white;">
+                <div class="modal-header modal-header-institucional">
                     <h5 class="modal-title">
                         <i class="bi bi-info-circle me-2"></i>
                         Detalle del Registro

@@ -230,45 +230,33 @@ $conn->close();
     <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.2/dist/css/bootstrap.min.css" rel="stylesheet">
     <!-- Bootstrap Icons -->
     <link href="https://cdn.jsdelivr.net/npm/bootstrap-icons@1.11.1/font/bootstrap-icons.css" rel="stylesheet">
-    
+    <!-- Estilos Institucionales -->
+    <link href="assets/css/styles.css" rel="stylesheet">
     <style>
-        :root {
-            --primary-gradient: linear-gradient(135deg, #667eea 0%, #764ba2 100%);
-            --success-gradient: linear-gradient(135deg, #11998e 0%, #38ef7d 100%);
-        }
-        
         body {
-            background: var(--primary-gradient);
+            background: var(--gradiente-primario);
             min-height: 100vh;
             display: flex;
             align-items: center;
             justify-content: center;
-            font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
             padding: 20px;
         }
-        
-        .registro-container {
-            width: 100%;
-            max-width: 480px;
-        }
-        
+        .registro-container { width: 100%; max-width: 480px; }
         .registro-card {
             background: white;
-            border-radius: 20px;
-            box-shadow: 0 20px 60px rgba(0, 0, 0, 0.3);
+            border-radius: var(--radio-grande);
+            box-shadow: var(--sombra-elevada);
             overflow: hidden;
         }
-        
         .registro-header {
             background: rgba(0, 0, 0, 0.05);
             padding: 30px;
             text-align: center;
         }
-        
         .registro-header .icon {
             width: 70px;
             height: 70px;
-            background: var(--primary-gradient);
+            background: var(--gradiente-primario);
             border-radius: 50%;
             display: flex;
             align-items: center;
@@ -277,133 +265,41 @@ $conn->close();
             font-size: 1.8rem;
             color: white;
         }
-        
-        .registro-header.success .icon {
-            background: var(--success-gradient);
-        }
-        
-        .registro-header h4 {
-            margin: 0;
-            color: #333;
-            font-weight: 600;
-        }
-        
-        .registro-header p {
-            margin: 10px 0 0;
-            color: #666;
-            font-size: 0.9rem;
-        }
-        
-        .registro-body {
-            padding: 30px;
-        }
-        
-        .form-control {
-            border-radius: 10px;
-            border: 2px solid #e0e0e0;
-            padding: 12px 15px;
-        }
-        
-        .form-control:focus {
-            border-color: #667eea;
-            box-shadow: 0 0 0 3px rgba(102, 126, 234, 0.15);
-        }
-        
+        .registro-header.success .icon { background: var(--gradiente-exito); }
+        .registro-header h4 { margin: 0; color: #333; font-weight: 600; }
+        .registro-header p { margin: 10px 0 0; color: #666; font-size: 0.9rem; }
+        .registro-body { padding: 30px; }
         .btn-primary-custom {
             width: 100%;
             padding: 14px;
-            background: var(--primary-gradient);
+            background: var(--gradiente-primario);
             border: none;
-            border-radius: 10px;
+            border-radius: var(--radio-medio);
             font-size: 1rem;
             font-weight: 600;
             transition: all 0.3s ease;
         }
-        
         .btn-primary-custom:hover {
             transform: translateY(-2px);
-            box-shadow: 0 10px 20px rgba(102, 126, 234, 0.4);
+            box-shadow: 0 10px 20px rgba(26, 82, 118, 0.4);
         }
-        
-        .btn-success-custom {
-            background: var(--success-gradient);
-        }
-        
-        .btn-success-custom:hover {
-            box-shadow: 0 10px 20px rgba(17, 153, 142, 0.4);
-        }
-        
-        .alert {
-            border-radius: 10px;
-            border: none;
-        }
-        
-        .paso-indicador {
-            display: flex;
-            justify-content: center;
-            gap: 10px;
-            margin-bottom: 20px;
-        }
-        
+        .btn-success-custom { background: var(--gradiente-exito); }
+        .btn-success-custom:hover { box-shadow: 0 10px 20px rgba(20, 143, 119, 0.4); }
+        .paso-indicador { display: flex; justify-content: center; gap: 10px; margin-bottom: 20px; }
         .paso-indicador .paso {
-            width: 35px;
-            height: 35px;
-            border-radius: 50%;
-            background: #e0e0e0;
-            color: #999;
-            display: flex;
-            align-items: center;
-            justify-content: center;
-            font-weight: 600;
-            font-size: 0.9rem;
+            width: 35px; height: 35px; border-radius: 50%;
+            background: #e0e0e0; color: #999;
+            display: flex; align-items: center; justify-content: center;
+            font-weight: 600; font-size: 0.9rem;
         }
-        
-        .paso-indicador .paso.active {
-            background: var(--primary-gradient);
-            color: white;
-        }
-        
-        .paso-indicador .paso.completed {
-            background: var(--success-gradient);
-            color: white;
-        }
-        
-        .paso-indicador .linea {
-            width: 40px;
-            height: 3px;
-            background: #e0e0e0;
-            align-self: center;
-        }
-        
-        .paso-indicador .linea.active {
-            background: var(--success-gradient);
-        }
-        
-        .info-usuario {
-            background: #f8f9fa;
-            border-radius: 10px;
-            padding: 15px;
-            margin-bottom: 20px;
-        }
-        
-        .info-usuario .label {
-            font-size: 0.75rem;
-            text-transform: uppercase;
-            color: #666;
-            margin-bottom: 3px;
-        }
-        
-        .info-usuario .valor {
-            font-weight: 600;
-            color: #333;
-        }
-        
-        .rut-input {
-            font-family: 'Courier New', monospace;
-            font-size: 1.1rem;
-            letter-spacing: 1px;
-            text-transform: uppercase;
-        }
+        .paso-indicador .paso.active { background: var(--gradiente-primario); color: white; }
+        .paso-indicador .paso.completed { background: var(--gradiente-exito); color: white; }
+        .paso-indicador .linea { width: 40px; height: 3px; background: #e0e0e0; align-self: center; }
+        .paso-indicador .linea.active { background: var(--gradiente-exito); }
+        .info-usuario { background: #f8f9fa; border-radius: var(--radio-medio); padding: 15px; margin-bottom: 20px; }
+        .info-usuario .label { font-size: 0.75rem; text-transform: uppercase; color: #666; margin-bottom: 3px; }
+        .info-usuario .valor { font-weight: 600; color: #333; }
+        .rut-input { font-family: 'Courier New', monospace; font-size: 1.1rem; letter-spacing: 1px; text-transform: uppercase; }
     </style>
 </head>
 <body>

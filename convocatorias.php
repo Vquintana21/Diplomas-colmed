@@ -42,55 +42,28 @@ if ($result_count) {
     <title>Gestión de Convocatorias - Sistema de Diplomas</title>
     <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.0/dist/css/bootstrap.min.css" rel="stylesheet">
     <link href="https://cdn.jsdelivr.net/npm/bootstrap-icons@1.10.0/font/bootstrap-icons.css" rel="stylesheet">
-    <link href="assets/css/custom.css" rel="stylesheet">
+    <!-- Estilos Institucionales -->
+    <link href="assets/css/styles.css" rel="stylesheet">
     <style>
-        .convocatoria-card {
-            transition: all 0.3s ease;
-            border: none;
-            box-shadow: 0 2px 10px rgba(0,0,0,0.08);
-        }
-        .convocatoria-card:hover {
-            box-shadow: 0 5px 20px rgba(0,0,0,0.12);
-            transform: translateY(-2px);
-        }
         .codigo-base {
             font-family: 'Courier New', monospace;
             font-weight: bold;
             font-size: 1.1em;
-            color: #1a5276;
+            color: var(--color-primario);
         }
-        .badge-activo {
-            background-color: #28a745;
-        }
-        .badge-inactivo {
-            background-color: #dc3545;
-        }
+        .badge-activo { background-color: var(--color-exito); }
+        .badge-inactivo { background-color: #dc3545; }
         .info-truncate {
-            max-height: 60px;
-            overflow: hidden;
-            text-overflow: ellipsis;
-            display: -webkit-box;
-            -webkit-line-clamp: 2;
-            -webkit-box-orient: vertical;
+            max-height: 60px; overflow: hidden; text-overflow: ellipsis;
+            display: -webkit-box; -webkit-line-clamp: 2; -webkit-box-orient: vertical;
         }
-        .btn-action {
-            padding: 0.25rem 0.5rem;
-            font-size: 0.875rem;
-        }
-        .empty-state {
-            text-align: center;
-            padding: 60px 20px;
-            color: #6c757d;
-        }
-        .empty-state i {
-            font-size: 4rem;
-            margin-bottom: 1rem;
-            opacity: 0.5;
-        }
+        .btn-action { padding: 0.25rem 0.5rem; font-size: 0.875rem; }
+        .empty-state { text-align: center; padding: 60px 20px; color: #6c757d; }
+        .empty-state i { font-size: 4rem; margin-bottom: 1rem; opacity: 0.5; }
     </style>
 </head>
-<body>
-    <nav class="navbar navbar-expand-lg navbar-dark bg-primary">
+<body data-pagina="convocatorias">
+    <nav class="navbar navbar-expand-lg navbar-institucional">
         <div class="container">
             <a class="navbar-brand" href="index.php">
                 <i class="bi bi-award"></i> Sistema de Diplomas

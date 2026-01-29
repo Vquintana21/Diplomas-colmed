@@ -18,123 +18,37 @@ $usuario = obtenerUsuarioActual();
     <link href="https://cdn.datatables.net/1.13.7/css/dataTables.bootstrap5.min.css" rel="stylesheet">
     <link href="https://cdn.datatables.net/buttons/2.4.2/css/buttons.bootstrap5.min.css" rel="stylesheet">
     <link href="https://cdn.datatables.net/responsive/2.5.0/css/responsive.bootstrap5.min.css" rel="stylesheet">
-    
+    <!-- Estilos Institucionales -->
+    <link href="assets/css/styles.css" rel="stylesheet">
     <style>
-        :root {
-            --primary-gradient: linear-gradient(135deg, #667eea 0%, #764ba2 100%);
-        }
-        
-        body {
-            background-color: #f8f9fa;
-            font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
-        }
-        
-        .navbar-custom {
-            background: var(--primary-gradient);
-        }
-        
-        .card-header-custom {
-            background: var(--primary-gradient);
-            color: white;
-        }
-        
-        .card {
-            border: none;
-            border-radius: 15px;
-            box-shadow: 0 5px 20px rgba(0,0,0,0.1);
-        }
-        
-        .card-header {
-            border-radius: 15px 15px 0 0 !important;
-        }
-        
-        /* DataTables customization */
-        .dataTables_wrapper .dataTables_length select,
-        .dataTables_wrapper .dataTables_filter input {
-            border-radius: 8px;
-            border: 1px solid #dee2e6;
-            padding: 6px 12px;
-        }
-        
+        /* Personalizaciones específicas para listado */
         .dataTables_wrapper .dataTables_filter input:focus {
-            border-color: #667eea;
-            box-shadow: 0 0 0 3px rgba(102, 126, 234, 0.15);
-            outline: none;
+            border-color: var(--color-primario);
+            box-shadow: 0 0 0 3px rgba(26, 82, 118, 0.15);
         }
-        
         table.dataTable thead th {
-            background: #343a40;
+            background: var(--color-secundario);
             color: white;
             font-weight: 600;
-            border-bottom: none !important;
         }
-        
         table.dataTable tbody tr:hover {
-            background-color: rgba(102, 126, 234, 0.1) !important;
+            background-color: rgba(26, 82, 118, 0.1) !important;
         }
-        
-        .badge-codigo {
-            font-family: 'Courier New', monospace;
-            font-size: 0.9rem;
-            padding: 6px 10px;
-        }
-        
-        .btn-action {
-            padding: 5px 10px;
-            font-size: 0.85rem;
-        }
-        
         .stats-card {
-            border-radius: 12px;
+            border-radius: var(--radio-medio);
             padding: 20px;
             color: white;
             text-align: center;
         }
-        
-        .stats-card.total {
-            background: var(--primary-gradient);
-        }
-        
-        .stats-card .numero {
-            font-size: 2.5rem;
-            font-weight: 700;
-        }
-        
-        .stats-card .texto {
-            opacity: 0.9;
-            font-size: 0.9rem;
-        }
-        
-        /* Responsive text truncate */
-        .text-truncate-table {
-            max-width: 250px;
-            white-space: nowrap;
-            overflow: hidden;
-            text-overflow: ellipsis;
-        }
-        
-        @media (max-width: 768px) {
-            .text-truncate-table {
-                max-width: 150px;
-            }
-        }
-        
-        /* Export buttons */
-        .dt-buttons .btn {
-            border-radius: 8px;
-            margin-right: 5px;
-        }
-        
-        .dt-buttons .btn-secondary {
-            background-color: #6c757d;
-            border-color: #6c757d;
-        }
+        .stats-card.total { background: var(--gradiente-primario); }
+        .stats-card .numero { font-size: 2.5rem; font-weight: 700; }
+        .stats-card .texto { opacity: 0.9; font-size: 0.9rem; }
     </style>
 </head>
-<body>
-    
+<body data-pagina="listado">
+
     <!-- Navbar -->
-    <nav class="navbar navbar-dark navbar-custom">
+    <nav class="navbar navbar-institucional">
         <div class="container-fluid">
             <a class="navbar-brand" href="listado.php">
                 <i class="bi bi-list-ul me-2"></i>
@@ -182,7 +96,7 @@ $usuario = obtenerUsuarioActual();
         
         <!-- Card con DataTable -->
         <div class="card">
-            <div class="card-header card-header-custom py-3">
+            <div class="card-header card-header-institucional py-3">
                 <div class="d-flex justify-content-between align-items-center flex-wrap gap-2">
                     <h5 class="mb-0">
                         <i class="bi bi-table me-2"></i>
@@ -227,7 +141,7 @@ $usuario = obtenerUsuarioActual();
     <div class="modal fade" id="modalDetalle" tabindex="-1">
         <div class="modal-dialog modal-lg">
             <div class="modal-content">
-                <div class="modal-header" style="background: var(--primary-gradient); color: white;">
+                <div class="modal-header modal-header-institucional">
                     <h5 class="modal-title">
                         <i class="bi bi-eye me-2"></i>
                         Detalle del Diploma

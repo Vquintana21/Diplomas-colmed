@@ -100,61 +100,24 @@ if ($_SERVER['REQUEST_METHOD'] === 'POST') {
     <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.2/dist/css/bootstrap.min.css" rel="stylesheet">
     <!-- Bootstrap Icons -->
     <link href="https://cdn.jsdelivr.net/npm/bootstrap-icons@1.11.1/font/bootstrap-icons.css" rel="stylesheet">
-    
+    <!-- Estilos Institucionales -->
+    <link href="assets/css/styles.css" rel="stylesheet">
     <style>
-        :root {
-            --primary-gradient: linear-gradient(135deg, #667eea 0%, #764ba2 100%);
-        }
-        
-        body {
-            background-color: #f8f9fa;
-            font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
-        }
-        
-        .navbar-custom {
-            background: var(--primary-gradient);
-        }
-        
-        .card {
-            border: none;
-            border-radius: 15px;
-            box-shadow: 0 5px 20px rgba(0,0,0,0.1);
-        }
-        
-        .card-header-custom {
-            background: var(--primary-gradient);
-            color: white;
-            border-radius: 15px 15px 0 0 !important;
-        }
-        
         .btn-primary-custom {
-            background: var(--primary-gradient);
+            background: var(--gradiente-primario);
             border: none;
         }
-        
         .btn-primary-custom:hover {
-            background: linear-gradient(135deg, #5a6fd6 0%, #6a4190 100%);
+            background: linear-gradient(135deg, #154360 0%, #1a5276 100%);
         }
-        
-        .form-control:focus {
-            border-color: #667eea;
-            box-shadow: 0 0 0 3px rgba(102, 126, 234, 0.15);
-        }
-        
-        .password-requirements {
-            font-size: 0.85rem;
-            color: #666;
-        }
-        
-        .password-requirements li {
-            margin-bottom: 5px;
-        }
+        .password-requirements { font-size: 0.85rem; color: #666; }
+        .password-requirements li { margin-bottom: 5px; }
     </style>
 </head>
-<body>
-    
+<body data-pagina="cambiar-password">
+
     <!-- Navbar -->
-    <nav class="navbar navbar-dark navbar-custom">
+    <nav class="navbar navbar-institucional">
         <div class="container">
             <a class="navbar-brand" href="index.php">
                 <i class="bi bi-key me-2"></i>
@@ -171,7 +134,7 @@ if ($_SERVER['REQUEST_METHOD'] === 'POST') {
         <div class="row justify-content-center">
             <div class="col-md-6 col-lg-5">
                 <div class="card">
-                    <div class="card-header card-header-custom py-3">
+                    <div class="card-header card-header-institucional py-3">
                         <h5 class="mb-0">
                             <i class="bi bi-shield-lock me-2"></i>
                             Cambiar Contraseña
