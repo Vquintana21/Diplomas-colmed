@@ -14,192 +14,62 @@ $usuario = obtenerUsuarioActual();
     <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.2/dist/css/bootstrap.min.css" rel="stylesheet">
     <!-- Bootstrap Icons -->
     <link href="https://cdn.jsdelivr.net/npm/bootstrap-icons@1.11.1/font/bootstrap-icons.css" rel="stylesheet">
-    
+    <!-- Estilos Institucionales -->
+    <link href="assets/css/styles.css" rel="stylesheet">
     <style>
-        :root {
-            --primary-gradient: linear-gradient(135deg, #51C1ED 0%, #135ED6 100%);
-            --success-gradient: linear-gradient(135deg, #11998e 0%, #38ef7d 100%);
-            --danger-gradient: linear-gradient(135deg, #eb3349 0%, #f45c43 100%);
-        }
-        
-        body {
-            background: linear-gradient(135deg, #f5f7fa 0%, #c3cfe2 100%);
-            min-height: 100vh;
-            font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
-        }
-        
+        body { background: var(--color-fondo); min-height: 100vh; }
         .validador-card {
             max-width: 600px;
             margin: 0 auto;
-            border-radius: 20px;
-            box-shadow: 0 20px 60px rgba(0, 0, 0, 0.15);
+            border-radius: var(--radio-grande);
+            box-shadow: var(--sombra-elevada);
             overflow: hidden;
-        }
-        
-        .validador-header {
-            background: var(--primary-gradient);
-            color: white;
-            padding: 40px 30px;
-            text-align: center;
-        }
-        
-        .validador-header h2 {
-            font-size: 28px;
-            margin-bottom: 10px;
-            font-weight: 600;
-        }
-        
-        .validador-header p {
-            opacity: 0.9;
-            margin: 0;
-        }
-        
-        .validador-content {
-            padding: 40px 30px;
             background: white;
         }
-        
+        .validador-content { padding: 40px 30px; background: white; }
         .codigo-input {
-            font-family: 'Courier New', monospace;
+            font-family: var(--fuente-monospace);
             letter-spacing: 2px;
             font-size: 1.1rem;
             padding: 15px;
-            border: 2px solid #e0e0e0;
-            border-radius: 10px;
-            transition: all 0.3s ease;
+            border: 2px solid var(--color-borde);
+            border-radius: var(--radio-medio);
         }
-        
         .codigo-input:focus {
-            border-color: #135ED6;
-            box-shadow: 0 0 0 3px rgba(19, 94, 214, 0.1);
+            border-color: var(--color-primario);
+            box-shadow: 0 0 0 3px rgba(26, 82, 118, 0.15);
         }
-        
         .btn-validar {
-            background: var(--primary-gradient);
+            background: var(--gradiente-primario);
             border: none;
             padding: 15px 30px;
-            font-size: 1rem;
             font-weight: 600;
             text-transform: uppercase;
             letter-spacing: 1px;
-            border-radius: 10px;
-            transition: all 0.3s ease;
+            border-radius: var(--radio-medio);
         }
-        
         .btn-validar:hover {
             transform: translateY(-2px);
-            box-shadow: 0 10px 20px rgba(19, 94, 214, 0.3);
+            box-shadow: 0 10px 20px rgba(26, 82, 118, 0.3);
         }
-        
-        .resultado-card {
-            border-radius: 15px;
-            margin-top: 25px;
-            animation: slideDown 0.3s ease;
-        }
-        
-        @keyframes slideDown {
-            from {
-                opacity: 0;
-                transform: translateY(-10px);
-            }
-            to {
-                opacity: 1;
-                transform: translateY(0);
-            }
-        }
-        
-        .resultado-valido {
-            background: linear-gradient(135deg, #d4edda 0%, #c3e6cb 100%);
-            border: 2px solid #28a745;
-        }
-        
-        .resultado-invalido {
-            background: linear-gradient(135deg, #f8d7da 0%, #f5c6cb 100%);
-            border: 2px solid #dc3545;
-        }
-        
-        .resultado-header {
-            display: flex;
-            align-items: center;
-            gap: 15px;
-            padding: 20px;
-            border-bottom: 1px solid rgba(0,0,0,0.1);
-        }
-        
-        .resultado-header .icono {
-            font-size: 2rem;
-        }
-        
-        .resultado-valido .icono {
-            color: #28a745;
-        }
-        
-        .resultado-invalido .icono {
-            color: #dc3545;
-        }
-        
-        .resultado-body {
-            padding: 20px;
-        }
-        
-        .info-item {
-            margin-bottom: 15px;
-        }
-        
-        .info-item:last-child {
-            margin-bottom: 0;
-        }
-        
-        .info-label {
-            font-size: 0.75rem;
-            text-transform: uppercase;
-            letter-spacing: 0.5px;
-            color: #666;
-            font-weight: 600;
-            margin-bottom: 5px;
-        }
-        
-        .info-value {
-            color: #333;
-            line-height: 1.6;
-        }
-        
-        .info-value code {
-            background: rgba(0,0,0,0.1);
-            padding: 2px 8px;
-            border-radius: 4px;
-            font-size: 0.95rem;
-        }
-        
-        .institucional-box {
-            background: rgba(0,0,0,0.05);
-            border-radius: 10px;
-            padding: 15px;
-            font-size: 0.9rem;
-            text-align: justify;
-        }
-        
-        .nav-link-custom {
-            color: rgba(255,255,255,0.8);
-            text-decoration: none;
-            transition: color 0.3s;
-        }
-        
-        .nav-link-custom:hover {
-            color: white;
-        }
-        
-        .spinner-border-sm {
-            width: 1rem;
-            height: 1rem;
-            border-width: 2px;
-        }
+        .resultado-card { border-radius: var(--radio-grande); margin-top: 25px; }
+        .resultado-header { display: flex; align-items: center; gap: 15px; padding: 20px; border-bottom: 1px solid rgba(0,0,0,0.1); }
+        .resultado-header .icono { font-size: 2rem; }
+        .resultado-body { padding: 20px; }
+        .info-item { margin-bottom: 15px; }
+        .info-item:last-child { margin-bottom: 0; }
+        .info-label { font-size: 0.75rem; text-transform: uppercase; letter-spacing: 0.5px; color: var(--color-texto-secundario); font-weight: 600; margin-bottom: 5px; }
+        .info-value { color: var(--color-texto); line-height: 1.6; }
+        .info-value code { background: rgba(0,0,0,0.1); padding: 2px 8px; border-radius: 4px; }
+        .institucional-box { background: rgba(0,0,0,0.05); border-radius: var(--radio-medio); padding: 15px; font-size: 0.9rem; text-align: justify; }
+        .nav-link-custom { color: rgba(255,255,255,0.8); text-decoration: none; }
+        .nav-link-custom:hover { color: white; }
     </style>
 </head>
-<body>
-    
+<body data-pagina="validador">
+
     <!-- Navbar -->
-    <nav class="navbar navbar-dark" style="background: var(--primary-gradient);">
+    <nav class="navbar navbar-dark navbar-institucional">
         <div class="container">
             <a class="navbar-brand" href="validador.php">
                 <i class="bi bi-patch-check me-2"></i>

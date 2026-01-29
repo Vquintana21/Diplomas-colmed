@@ -23,47 +23,12 @@ $conn->close();
     <title>Sistema de Carga Masiva de Diplomas</title>
     <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.2/dist/css/bootstrap.min.css" rel="stylesheet">
     <link href="https://cdn.jsdelivr.net/npm/bootstrap-icons@1.11.1/font/bootstrap-icons.css" rel="stylesheet">
-    <link href="assets/css/custom.css" rel="stylesheet">
-    <style>
-        .convocatoria-card {
-            cursor: pointer;
-            transition: all 0.3s ease;
-            border: 2px solid transparent;
-        }
-        .convocatoria-card:hover {
-            border-color: #0d6efd;
-            background-color: #f8f9ff;
-        }
-        .convocatoria-card.selected {
-            border-color: #0d6efd;
-            background-color: #e7f1ff;
-        }
-        .convocatoria-card .codigo-base {
-            font-family: 'Courier New', monospace;
-            font-weight: bold;
-            color: #1a5276;
-        }
-        .codigo-info-box {
-            background: linear-gradient(135deg, #1a5276, #2874a6);
-            color: white;
-            padding: 15px 20px;
-            border-radius: 10px;
-            margin-bottom: 20px;
-        }
-        .codigo-info-box .codigo {
-            font-family: 'Courier New', monospace;
-            font-size: 1.3em;
-            letter-spacing: 1px;
-        }
-        .codigo-info-box .correlativo {
-            color: #ffd700;
-        }
-    </style>
+    <link href="assets/css/styles.css" rel="stylesheet">
 </head>
-<body class="bg-light">
-    
+<body class="bg-light" data-pagina="carga-diplomas">
+
     <!-- Navbar -->
-    <nav class="navbar navbar-expand-lg navbar-dark bg-primary">
+    <nav class="navbar navbar-expand-lg navbar-dark navbar-institucional">
         <div class="container">
             <a class="navbar-brand" href="index.php">
                 <i class="bi bi-file-earmark-spreadsheet me-2"></i>
@@ -109,7 +74,7 @@ $conn->close();
         
         <div class="card shadow-lg border-0 rounded-4">
             
-            <div class="card-header bg-gradient-primary text-white py-4">
+            <div class="card-header card-header-institucional py-4">
                 <div class="row align-items-center">
                     <div class="col">
                         <h4 class="mb-1">
@@ -183,7 +148,7 @@ $conn->close();
                         <div class="row g-3" id="listaConvocatorias">
                             <?php foreach ($convocatorias as $conv): ?>
                             <div class="col-md-6">
-                                <div class="card convocatoria-card h-100" 
+                                <div class="card card-seleccion h-100" 
                                      data-id="<?php echo $conv['id']; ?>"
                                      data-codigo="<?php echo htmlspecialchars($conv['codigo_base']); ?>"
                                      data-nombre="<?php echo htmlspecialchars($conv['nombre']); ?>"
@@ -332,7 +297,7 @@ $conn->close();
                 <div id="seccionPreview" class="d-none">
                     
                     <!-- Info de convocatoria -->
-                    <div id="infoConvocatoriaPreview" class="codigo-info-box mb-4">
+                    <div id="infoConvocatoriaPreview" class="codigo-preview mb-4">
                         <small class="opacity-75">Convocatoria:</small>
                         <div class="codigo">
                             <span id="codigoBasePreview"></span>
@@ -479,6 +444,7 @@ $conn->close();
     
     <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.2/dist/js/bootstrap.bundle.min.js"></script>
     <script src="assets/js/app.js"></script>
+    <script src="assets/js/main.js"></script>
     <script>
         // Variables globales para convocatoria
         let convocatoriaSeleccionadaId = null;

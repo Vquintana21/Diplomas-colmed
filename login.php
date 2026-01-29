@@ -121,115 +121,38 @@ if ($_SERVER['REQUEST_METHOD'] === 'POST' && !$bloqueado) {
     <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.2/dist/css/bootstrap.min.css" rel="stylesheet">
     <!-- Bootstrap Icons -->
     <link href="https://cdn.jsdelivr.net/npm/bootstrap-icons@1.11.1/font/bootstrap-icons.css" rel="stylesheet">
-    
+    <!-- Estilos Institucionales -->
+    <link href="assets/css/styles.css" rel="stylesheet">
     <style>
-        :root {
-            --primary-gradient: linear-gradient(135deg, #667eea 0%, #764ba2 100%);
-        }
-        
         body {
-            background: var(--primary-gradient);
+            background: var(--gradiente-primario);
             min-height: 100vh;
-            display: flex;
-            align-items: center;
-            justify-content: center;
-            font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
         }
-        
-        .login-container {
-            width: 100%;
-            max-width: 420px;
-            padding: 20px;
-        }
-        
-        .login-card {
-            background: white;
-            border-radius: 20px;
-            box-shadow: 0 20px 60px rgba(0, 0, 0, 0.3);
-            overflow: hidden;
-        }
-        
-        .login-header {
-            background: rgba(0, 0, 0, 0.05);
-            padding: 40px 30px;
-            text-align: center;
-        }
-        
-        .login-header .icon {
-            width: 80px;
-            height: 80px;
-            background: var(--primary-gradient);
-            border-radius: 50%;
-            display: flex;
-            align-items: center;
-            justify-content: center;
-            margin: 0 auto 20px;
-            font-size: 2rem;
-            color: white;
-        }
-        
-        .login-header h4 {
-            margin: 0;
-            color: #333;
-            font-weight: 600;
-        }
-        
-        .login-header p {
-            margin: 10px 0 0;
-            color: #666;
-            font-size: 0.9rem;
-        }
-        
-        .login-body {
-            padding: 30px;
-        }
-        
-        .form-floating {
-            margin-bottom: 20px;
-        }
-        
+        .login-body { padding: 30px; }
+        .form-floating { margin-bottom: 20px; }
         .form-floating .form-control {
-            border-radius: 10px;
-            border: 2px solid #e0e0e0;
+            border-radius: var(--radio-medio);
+            border: 2px solid var(--color-borde);
             height: 58px;
         }
-        
         .form-floating .form-control:focus {
-            border-color: #667eea;
-            box-shadow: 0 0 0 3px rgba(102, 126, 234, 0.15);
+            border-color: var(--color-primario);
+            box-shadow: 0 0 0 3px rgba(26, 82, 118, 0.15);
         }
-        
-        .form-floating label {
-            padding-left: 15px;
-        }
-        
         .btn-login {
             width: 100%;
             padding: 14px;
-            background: var(--primary-gradient);
+            background: var(--gradiente-primario);
             border: none;
-            border-radius: 10px;
-            font-size: 1rem;
+            border-radius: var(--radio-medio);
             font-weight: 600;
             text-transform: uppercase;
             letter-spacing: 1px;
-            transition: all 0.3s ease;
         }
-        
         .btn-login:hover {
             transform: translateY(-2px);
-            box-shadow: 0 10px 20px rgba(102, 126, 234, 0.4);
+            box-shadow: 0 10px 20px rgba(26, 82, 118, 0.4);
         }
-        
-        .btn-login:active {
-            transform: translateY(0);
-        }
-        
-        .alert {
-            border-radius: 10px;
-            border: none;
-        }
-        
         .password-toggle {
             position: absolute;
             right: 15px;
@@ -241,29 +164,20 @@ if ($_SERVER['REQUEST_METHOD'] === 'POST' && !$bloqueado) {
             cursor: pointer;
             z-index: 10;
         }
-        
-        .password-toggle:hover {
-            color: #667eea;
-        }
-        
-        .form-floating-password {
-            position: relative;
-        }
-        
-        .form-floating-password .form-control {
-            padding-right: 50px;
-        }
+        .password-toggle:hover { color: var(--color-primario); }
+        .form-floating-password { position: relative; }
+        .form-floating-password .form-control { padding-right: 50px; }
     </style>
 </head>
-<body>
-    
+<body data-pagina="login">
+
     <div class="login-container">
-        <div class="login-card">
+        <div class="card login-card">
             <div class="login-header">
-                <div class="icon">
-                    <i class="bi bi-shield-lock"></i>
+                <div class="logo-icon">
+                    <i class="bi bi-award"></i>
                 </div>
-                <h4>Sistema de Diplomas</h4>
+                <h4>Sistema de Diplomas COLMED</h4>
                 <p>Ingrese sus credenciales para continuar</p>
             </div>
             

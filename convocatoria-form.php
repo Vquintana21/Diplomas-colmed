@@ -113,45 +113,30 @@ if ($_SERVER['REQUEST_METHOD'] === 'POST') {
     <title><?php echo $es_edicion ? 'Editar' : 'Nueva'; ?> Convocatoria - Sistema de Diplomas</title>
     <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.0/dist/css/bootstrap.min.css" rel="stylesheet">
     <link href="https://cdn.jsdelivr.net/npm/bootstrap-icons@1.10.0/font/bootstrap-icons.css" rel="stylesheet">
-    <link href="assets/css/custom.css" rel="stylesheet">
+    <!-- Estilos Institucionales -->
+    <link href="assets/css/styles.css" rel="stylesheet">
     <style>
         .codigo-preview {
             font-family: 'Courier New', monospace;
             font-size: 1.5em;
             letter-spacing: 2px;
-            background: linear-gradient(135deg, #1a5276, #2874a6);
+            background: var(--gradiente-primario);
             color: white;
             padding: 15px 25px;
-            border-radius: 10px;
+            border-radius: var(--radio-medio);
             text-align: center;
             margin-bottom: 20px;
         }
-        .codigo-preview .correlativo {
-            color: #ffd700;
-        }
-        .formato-help {
-            font-size: 0.85em;
-            color: #6c757d;
-        }
-        .formato-help code {
-            background: #e9ecef;
-            padding: 2px 6px;
-            border-radius: 3px;
-        }
-        .char-count {
-            font-size: 0.8em;
-            color: #6c757d;
-        }
-        .char-count.invalid {
-            color: #dc3545;
-        }
-        .char-count.valid {
-            color: #28a745;
-        }
+        .codigo-preview .correlativo { color: #ffd700; }
+        .formato-help { font-size: 0.85em; color: #6c757d; }
+        .formato-help code { background: #e9ecef; padding: 2px 6px; border-radius: 3px; }
+        .char-count { font-size: 0.8em; color: #6c757d; }
+        .char-count.invalid { color: #dc3545; }
+        .char-count.valid { color: var(--color-exito); }
     </style>
 </head>
-<body>
-    <nav class="navbar navbar-expand-lg navbar-dark bg-primary">
+<body data-pagina="convocatoria-form">
+    <nav class="navbar navbar-expand-lg navbar-institucional">
         <div class="container">
             <a class="navbar-brand" href="index.php">
                 <i class="bi bi-award"></i> Sistema de Diplomas

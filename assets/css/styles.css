@@ -1,0 +1,684 @@
+/**
+ * Sistema de Gestion de Diplomas - COLMED
+ * Estilos Unificados v2.0
+ * ISO 27001 Compliant
+ *
+ * Paleta de Colores Institucional:
+ * - Primario: #1a5276 (Azul institucional)
+ * - Secundario: #2874a6 (Azul medio)
+ * - Acento: #148f77 (Verde institucional)
+ * - Fondo: #f8f9fa
+ */
+
+/* ============================================
+   VARIABLES CSS - PALETA INSTITUCIONAL
+   ============================================ */
+:root {
+    /* Colores Primarios */
+    --color-primario: #1a5276;
+    --color-primario-hover: #154360;
+    --color-primario-light: #2874a6;
+
+    /* Colores Secundarios */
+    --color-secundario: #2c3e50;
+    --color-secundario-light: #34495e;
+
+    /* Color Acento */
+    --color-acento: #148f77;
+    --color-acento-hover: #117a65;
+
+    /* Colores de Estado */
+    --color-exito: #1e8449;
+    --color-exito-light: #d4efdf;
+    --color-advertencia: #b7950b;
+    --color-advertencia-light: #fcf3cf;
+    --color-error: #922b21;
+    --color-error-light: #fadbd8;
+    --color-info: #1a5276;
+    --color-info-light: #d4e6f1;
+
+    /* Fondos */
+    --color-fondo: #f8f9fa;
+    --color-fondo-card: #ffffff;
+    --color-borde: #dee2e6;
+
+    /* Texto */
+    --color-texto: #2c3e50;
+    --color-texto-secundario: #6c757d;
+    --color-texto-claro: #ffffff;
+
+    /* Gradientes sutiles (solo donde necesario) */
+    --gradiente-primario: linear-gradient(135deg, #1a5276 0%, #2874a6 100%);
+    --gradiente-acento: linear-gradient(135deg, #148f77 0%, #1abc9c 100%);
+
+    /* Sombras */
+    --sombra-suave: 0 2px 10px rgba(0, 0, 0, 0.08);
+    --sombra-media: 0 4px 15px rgba(0, 0, 0, 0.1);
+    --sombra-elevada: 0 8px 25px rgba(0, 0, 0, 0.12);
+
+    /* Transiciones */
+    --transicion-rapida: 0.2s ease;
+    --transicion-normal: 0.3s ease;
+
+    /* Tipografia */
+    --fuente-principal: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
+    --fuente-monospace: 'Courier New', Consolas, monospace;
+
+    /* Bordes */
+    --radio-pequeño: 6px;
+    --radio-medio: 10px;
+    --radio-grande: 15px;
+}
+
+/* ============================================
+   RESET Y BASE
+   ============================================ */
+*, *::before, *::after {
+    box-sizing: border-box;
+}
+
+body {
+    font-family: var(--fuente-principal);
+    background-color: var(--color-fondo);
+    color: var(--color-texto);
+    line-height: 1.6;
+}
+
+/* ============================================
+   NAVBAR - BARRA DE NAVEGACION
+   ============================================ */
+.navbar-institucional {
+    background: var(--gradiente-primario);
+    box-shadow: var(--sombra-media);
+}
+
+.navbar-institucional .navbar-brand {
+    font-weight: 600;
+    letter-spacing: 0.5px;
+}
+
+.navbar-institucional .nav-link {
+    color: rgba(255, 255, 255, 0.9) !important;
+    transition: var(--transicion-rapida);
+    padding: 0.5rem 1rem;
+    border-radius: var(--radio-pequeño);
+}
+
+.navbar-institucional .nav-link:hover,
+.navbar-institucional .nav-link.active {
+    color: #ffffff !important;
+    background: rgba(255, 255, 255, 0.1);
+}
+
+.navbar-institucional .dropdown-menu {
+    border: none;
+    box-shadow: var(--sombra-elevada);
+    border-radius: var(--radio-medio);
+}
+
+/* ============================================
+   CARDS - TARJETAS
+   ============================================ */
+.card {
+    border: none;
+    border-radius: var(--radio-grande);
+    box-shadow: var(--sombra-suave);
+    transition: var(--transicion-normal);
+}
+
+.card:hover {
+    box-shadow: var(--sombra-media);
+}
+
+.card-header-institucional {
+    background: var(--gradiente-primario);
+    color: var(--color-texto-claro);
+    border-radius: var(--radio-grande) var(--radio-grande) 0 0 !important;
+    padding: 1rem 1.25rem;
+    font-weight: 600;
+}
+
+.card-seleccion {
+    cursor: pointer;
+    border: 2px solid transparent;
+    transition: var(--transicion-normal);
+}
+
+.card-seleccion:hover {
+    border-color: var(--color-primario-light);
+    transform: translateY(-3px);
+    box-shadow: var(--sombra-elevada);
+}
+
+.card-seleccion.selected {
+    border-color: var(--color-primario);
+    background: var(--color-info-light);
+}
+
+/* ============================================
+   BOTONES
+   ============================================ */
+.btn-institucional {
+    background: var(--gradiente-primario);
+    border: none;
+    color: var(--color-texto-claro);
+    padding: 0.5rem 1.5rem;
+    border-radius: var(--radio-pequeño);
+    font-weight: 500;
+    transition: var(--transicion-rapida);
+}
+
+.btn-institucional:hover {
+    background: var(--color-primario-hover);
+    color: var(--color-texto-claro);
+    transform: translateY(-1px);
+    box-shadow: var(--sombra-suave);
+}
+
+.btn-institucional:disabled {
+    opacity: 0.6;
+    cursor: not-allowed;
+}
+
+.btn-acento {
+    background: var(--gradiente-acento);
+    border: none;
+    color: var(--color-texto-claro);
+}
+
+.btn-acento:hover {
+    background: var(--color-acento-hover);
+    color: var(--color-texto-claro);
+}
+
+.btn-outline-institucional {
+    color: var(--color-primario);
+    border: 2px solid var(--color-primario);
+    background: transparent;
+}
+
+.btn-outline-institucional:hover {
+    background: var(--color-primario);
+    color: var(--color-texto-claro);
+}
+
+/* ============================================
+   FORMULARIOS
+   ============================================ */
+.form-control:focus,
+.form-select:focus {
+    border-color: var(--color-primario-light);
+    box-shadow: 0 0 0 3px rgba(26, 82, 118, 0.15);
+}
+
+.input-group-text {
+    background: var(--color-fondo);
+    border-color: var(--color-borde);
+}
+
+/* ============================================
+   ZONA DE UPLOAD
+   ============================================ */
+.upload-zone {
+    border: 3px dashed var(--color-borde);
+    border-radius: var(--radio-grande);
+    padding: 50px 30px;
+    text-align: center;
+    transition: var(--transicion-normal);
+    cursor: pointer;
+    background: var(--color-fondo);
+}
+
+.upload-zone:hover,
+.upload-zone.dragover {
+    border-color: var(--color-primario);
+    background: var(--color-info-light);
+}
+
+.upload-zone .upload-icon {
+    font-size: 4rem;
+    color: var(--color-primario);
+    margin-bottom: 15px;
+}
+
+/* ============================================
+   INDICADOR DE PASOS
+   ============================================ */
+.steps-indicator {
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    gap: 10px;
+    margin-bottom: 30px;
+}
+
+.steps-indicator .step {
+    width: 40px;
+    height: 40px;
+    border-radius: 50%;
+    background: #e0e0e0;
+    color: #999;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    font-weight: 600;
+    transition: var(--transicion-normal);
+}
+
+.steps-indicator .step.active {
+    background: var(--gradiente-primario);
+    color: var(--color-texto-claro);
+}
+
+.steps-indicator .step.completed {
+    background: var(--color-exito);
+    color: var(--color-texto-claro);
+}
+
+.steps-indicator .line {
+    width: 60px;
+    height: 3px;
+    background: #e0e0e0;
+    transition: var(--transicion-normal);
+}
+
+.steps-indicator .line.active {
+    background: var(--color-exito);
+}
+
+/* ============================================
+   ESTADISTICAS
+   ============================================ */
+.stats-box {
+    padding: 20px;
+    border-radius: var(--radio-medio);
+    text-align: center;
+    color: var(--color-texto-claro);
+}
+
+.stats-box .numero {
+    font-size: 2.5rem;
+    font-weight: 700;
+    line-height: 1;
+}
+
+.stats-box .etiqueta {
+    font-size: 0.9rem;
+    opacity: 0.9;
+    margin-top: 5px;
+}
+
+.stats-box.total {
+    background: var(--gradiente-primario);
+}
+
+.stats-box.validos {
+    background: var(--color-exito);
+}
+
+.stats-box.errores {
+    background: var(--color-error);
+}
+
+.stats-box.advertencias {
+    background: var(--color-advertencia);
+}
+
+/* ============================================
+   TABLAS
+   ============================================ */
+.table-institucional thead th {
+    background: var(--color-secundario);
+    color: var(--color-texto-claro);
+    font-weight: 600;
+    border: none;
+    position: sticky;
+    top: 0;
+    z-index: 10;
+}
+
+.table-institucional tbody tr:hover {
+    background: var(--color-info-light);
+}
+
+.table-preview {
+    font-size: 0.9rem;
+}
+
+.table-preview th {
+    background: var(--color-secundario);
+    color: var(--color-texto-claro);
+    font-weight: 600;
+    position: sticky;
+    top: 0;
+}
+
+/* ============================================
+   BADGES Y ESTADOS
+   ============================================ */
+.badge-codigo {
+    font-family: var(--fuente-monospace);
+    font-size: 0.9rem;
+    padding: 0.35em 0.65em;
+    background: var(--color-secundario);
+}
+
+.badge-estado-valido {
+    background: var(--color-exito) !important;
+}
+
+.badge-estado-error {
+    background: var(--color-error) !important;
+}
+
+.badge-estado-advertencia {
+    background: var(--color-advertencia) !important;
+}
+
+.badge-activo {
+    background: var(--color-exito) !important;
+}
+
+.badge-inactivo {
+    background: var(--color-error) !important;
+}
+
+/* ============================================
+   CODIGO BASE
+   ============================================ */
+.codigo-base {
+    font-family: var(--fuente-monospace);
+    font-weight: bold;
+    font-size: 1.1em;
+    color: var(--color-primario);
+    letter-spacing: 1px;
+}
+
+.codigo-preview {
+    font-family: var(--fuente-monospace);
+    font-size: 1.5em;
+    letter-spacing: 2px;
+    background: var(--gradiente-primario);
+    color: var(--color-texto-claro);
+    padding: 15px 25px;
+    border-radius: var(--radio-medio);
+    text-align: center;
+    margin-bottom: 20px;
+}
+
+.codigo-preview .correlativo {
+    color: #ffd700;
+}
+
+/* ============================================
+   VALIDADOR PUBLICO
+   ============================================ */
+.validador-header {
+    background: var(--gradiente-primario);
+    padding: 40px 0;
+    color: var(--color-texto-claro);
+    text-align: center;
+}
+
+.validador-header h1 {
+    font-weight: 700;
+    margin-bottom: 10px;
+}
+
+.validador-form {
+    background: var(--color-fondo-card);
+    padding: 30px;
+    border-radius: var(--radio-grande);
+    box-shadow: var(--sombra-elevada);
+    margin-top: -30px;
+}
+
+.resultado-valido {
+    background: var(--color-exito-light);
+    border-left: 5px solid var(--color-exito);
+    padding: 25px;
+    border-radius: var(--radio-medio);
+}
+
+.resultado-invalido {
+    background: var(--color-error-light);
+    border-left: 5px solid var(--color-error);
+    padding: 25px;
+    border-radius: var(--radio-medio);
+}
+
+/* ============================================
+   LOGIN Y REGISTRO
+   ============================================ */
+.login-container {
+    min-height: 100vh;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    background: var(--color-fondo);
+}
+
+.login-card {
+    width: 100%;
+    max-width: 420px;
+    border-radius: var(--radio-grande);
+    box-shadow: var(--sombra-elevada);
+}
+
+.login-header {
+    background: var(--gradiente-primario);
+    color: var(--color-texto-claro);
+    padding: 30px;
+    text-align: center;
+    border-radius: var(--radio-grande) var(--radio-grande) 0 0;
+}
+
+.login-header .logo-icon {
+    font-size: 3.5rem;
+    margin-bottom: 15px;
+}
+
+/* ============================================
+   ALERTAS PERSONALIZADAS
+   ============================================ */
+.alert-institucional {
+    border: none;
+    border-radius: var(--radio-medio);
+    border-left: 4px solid;
+}
+
+.alert-institucional.alert-success {
+    background: var(--color-exito-light);
+    border-left-color: var(--color-exito);
+    color: var(--color-exito);
+}
+
+.alert-institucional.alert-danger {
+    background: var(--color-error-light);
+    border-left-color: var(--color-error);
+    color: var(--color-error);
+}
+
+.alert-institucional.alert-warning {
+    background: var(--color-advertencia-light);
+    border-left-color: var(--color-advertencia);
+    color: var(--color-advertencia);
+}
+
+.alert-institucional.alert-info {
+    background: var(--color-info-light);
+    border-left-color: var(--color-info);
+    color: var(--color-info);
+}
+
+/* ============================================
+   MODAL
+   ============================================ */
+.modal-header-institucional {
+    background: var(--gradiente-primario);
+    color: var(--color-texto-claro);
+}
+
+.modal-content {
+    border: none;
+    border-radius: var(--radio-grande);
+}
+
+/* ============================================
+   UTILIDADES
+   ============================================ */
+.text-institucional {
+    color: var(--color-primario) !important;
+}
+
+.bg-institucional {
+    background: var(--gradiente-primario) !important;
+}
+
+.border-institucional {
+    border-color: var(--color-primario) !important;
+}
+
+.shadow-institucional {
+    box-shadow: var(--sombra-media) !important;
+}
+
+/* Truncar texto */
+.text-truncate-2 {
+    display: -webkit-box;
+    -webkit-line-clamp: 2;
+    -webkit-box-orient: vertical;
+    overflow: hidden;
+}
+
+/* Estado vacio */
+.empty-state {
+    text-align: center;
+    padding: 60px 20px;
+    color: var(--color-texto-secundario);
+}
+
+.empty-state i {
+    font-size: 4rem;
+    margin-bottom: 1rem;
+    opacity: 0.5;
+}
+
+/* Contador de caracteres */
+.char-count {
+    font-size: 0.8em;
+    color: var(--color-texto-secundario);
+}
+
+.char-count.valid {
+    color: var(--color-exito);
+}
+
+.char-count.invalid {
+    color: var(--color-error);
+}
+
+/* Formato de ayuda */
+.formato-help {
+    font-size: 0.85em;
+    color: var(--color-texto-secundario);
+}
+
+.formato-help code {
+    background: #e9ecef;
+    padding: 2px 6px;
+    border-radius: 3px;
+}
+
+/* Botones de accion pequenos */
+.btn-action {
+    padding: 0.25rem 0.5rem;
+    font-size: 0.875rem;
+}
+
+/* ============================================
+   ANIMACIONES
+   ============================================ */
+@keyframes fadeIn {
+    from { opacity: 0; transform: translateY(-10px); }
+    to { opacity: 1; transform: translateY(0); }
+}
+
+.fade-in {
+    animation: fadeIn 0.3s ease;
+}
+
+@keyframes pulse {
+    0%, 100% { transform: scale(1); }
+    50% { transform: scale(1.05); }
+}
+
+.pulse {
+    animation: pulse 2s infinite;
+}
+
+/* ============================================
+   RESPONSIVE
+   ============================================ */
+@media (max-width: 768px) {
+    .stats-box .numero {
+        font-size: 1.8rem;
+    }
+
+    .upload-zone {
+        padding: 30px 20px;
+    }
+
+    .upload-zone .upload-icon {
+        font-size: 3rem;
+    }
+
+    .codigo-preview {
+        font-size: 1.2em;
+        padding: 12px 15px;
+    }
+
+    .steps-indicator .line {
+        width: 30px;
+    }
+
+    .validador-header {
+        padding: 30px 15px;
+    }
+}
+
+@media (max-width: 576px) {
+    .navbar-institucional .navbar-brand {
+        font-size: 1rem;
+    }
+
+    .card-body {
+        padding: 1rem;
+    }
+
+    .login-header {
+        padding: 20px;
+    }
+
+    .login-header .logo-icon {
+        font-size: 2.5rem;
+    }
+}
+
+/* ============================================
+   PRINT STYLES
+   ============================================ */
+@media print {
+    .navbar, .btn, .no-print {
+        display: none !important;
+    }
+
+    .card {
+        box-shadow: none;
+        border: 1px solid #ddd;
+    }
+
+    body {
+        background: white;
+    }
+}

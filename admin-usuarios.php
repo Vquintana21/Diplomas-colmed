@@ -159,64 +159,25 @@ $conn->close();
     <link href="https://cdn.jsdelivr.net/npm/bootstrap-icons@1.11.1/font/bootstrap-icons.css" rel="stylesheet">
     <!-- DataTables CSS -->
     <link href="https://cdn.datatables.net/1.13.7/css/dataTables.bootstrap5.min.css" rel="stylesheet">
-    
+    <!-- Estilos Institucionales -->
+    <link href="assets/css/styles.css" rel="stylesheet">
     <style>
-        :root {
-            --primary-gradient: linear-gradient(135deg, #667eea 0%, #764ba2 100%);
-        }
-        
-        body {
-            background-color: #f8f9fa;
-            font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
-        }
-        
-        .navbar-custom {
-            background: var(--primary-gradient);
-        }
-        
-        .card {
-            border: none;
-            border-radius: 15px;
-            box-shadow: 0 5px 20px rgba(0,0,0,0.1);
-        }
-        
-        .card-header-custom {
-            background: var(--primary-gradient);
-            color: white;
-            border-radius: 15px 15px 0 0 !important;
-        }
-        
         .stats-card {
-            border-radius: 12px;
+            border-radius: var(--radio-medio);
             padding: 20px;
             color: white;
             text-align: center;
         }
-        
-        .stats-card.total { background: var(--primary-gradient); }
-        .stats-card.registrados { background: linear-gradient(135deg, #11998e 0%, #38ef7d 100%); }
+        .stats-card.total { background: var(--gradiente-primario); }
+        .stats-card.registrados { background: var(--gradiente-exito); }
         .stats-card.pendientes { background: linear-gradient(135deg, #f093fb 0%, #f5576c 100%); }
-        
-        .stats-card .numero {
-            font-size: 2rem;
-            font-weight: 700;
-        }
-        
-        .badge-rut {
-            font-family: 'Courier New', monospace;
-            font-size: 0.9rem;
-        }
-        
-        .btn-action {
-            padding: 5px 10px;
-            font-size: 0.85rem;
-        }
+        .stats-card .numero { font-size: 2rem; font-weight: 700; }
     </style>
 </head>
-<body>
-    
+<body data-pagina="admin-usuarios">
+
     <!-- Navbar -->
-    <nav class="navbar navbar-dark navbar-custom">
+    <nav class="navbar navbar-institucional">
         <div class="container-fluid">
             <a class="navbar-brand" href="admin-usuarios.php">
                 <i class="bi bi-person-gear me-2"></i>
@@ -276,7 +237,7 @@ $conn->close();
             <!-- Formulario agregar -->
             <div class="col-lg-4 mb-4">
                 <div class="card">
-                    <div class="card-header card-header-custom py-3">
+                    <div class="card-header card-header-institucional py-3">
                         <h5 class="mb-0">
                             <i class="bi bi-person-plus me-2"></i>
                             Agregar Usuario Permitido
@@ -323,7 +284,7 @@ $conn->close();
             <!-- Lista de usuarios permitidos -->
             <div class="col-lg-8">
                 <div class="card">
-                    <div class="card-header card-header-custom py-3">
+                    <div class="card-header card-header-institucional py-3">
                         <h5 class="mb-0">
                             <i class="bi bi-list-check me-2"></i>
                             Lista de Usuarios Permitidos
