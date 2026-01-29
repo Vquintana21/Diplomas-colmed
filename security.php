@@ -30,8 +30,8 @@ function aplicarHeadersSeguridad() {
     // Referrer Policy
     header('Referrer-Policy: strict-origin-when-cross-origin');
     
-    // Content Security Policy básica
-    header("Content-Security-Policy: default-src 'self' https://cdn.jsdelivr.net https://cdn.datatables.net https://code.jquery.com; script-src 'self' 'unsafe-inline' https://cdn.jsdelivr.net https://cdn.datatables.net https://code.jquery.com; style-src 'self' 'unsafe-inline' https://cdn.jsdelivr.net https://cdn.datatables.net; font-src 'self' https://cdn.jsdelivr.net;");
+    // Content Security Policy básica (ISO 27001 A.8.26)
+    header("Content-Security-Policy: default-src 'self' https://cdn.jsdelivr.net https://cdn.datatables.net https://code.jquery.com https://cdnjs.cloudflare.com; script-src 'self' 'unsafe-inline' https://cdn.jsdelivr.net https://cdn.datatables.net https://code.jquery.com https://cdnjs.cloudflare.com; style-src 'self' 'unsafe-inline' https://cdn.jsdelivr.net https://cdn.datatables.net; font-src 'self' https://cdn.jsdelivr.net; img-src 'self' data: https:;");
     
     // Eliminar header que expone versión de PHP
     header_remove('X-Powered-By');

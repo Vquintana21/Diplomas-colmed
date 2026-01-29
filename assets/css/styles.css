@@ -244,6 +244,82 @@ body {
 /* ============================================
    INDICADOR DE PASOS
    ============================================ */
+.steps-container {
+    display: flex;
+    justify-content: center;
+    padding: 20px 0;
+}
+
+.steps-container .step {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    position: relative;
+    z-index: 1;
+}
+
+.steps-container .step-number {
+    width: 50px;
+    height: 50px;
+    border-radius: 50%;
+    background: #e0e0e0;
+    color: #999;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    font-weight: 700;
+    font-size: 1.2rem;
+    transition: var(--transicion-normal);
+    border: 3px solid transparent;
+}
+
+.steps-container .step.active .step-number {
+    background: var(--gradiente-primario);
+    color: var(--color-texto-claro);
+    border-color: var(--color-primario-light);
+    box-shadow: 0 4px 15px rgba(26, 82, 118, 0.3);
+}
+
+.steps-container .step.completed .step-number {
+    background: var(--color-exito);
+    color: var(--color-texto-claro);
+    border-color: var(--color-exito);
+}
+
+.steps-container .step-label {
+    margin-top: 10px;
+    font-size: 0.85rem;
+    color: #999;
+    font-weight: 500;
+    text-align: center;
+    max-width: 100px;
+    transition: var(--transicion-normal);
+}
+
+.steps-container .step.active .step-label {
+    color: var(--color-primario);
+    font-weight: 600;
+}
+
+.steps-container .step.completed .step-label {
+    color: var(--color-exito);
+}
+
+.steps-container .step-line {
+    width: 80px;
+    height: 4px;
+    background: #e0e0e0;
+    margin: 0 15px;
+    margin-top: 23px;
+    border-radius: 2px;
+    transition: var(--transicion-normal);
+}
+
+.steps-container .step-line.active {
+    background: var(--gradiente-exito);
+}
+
+/* Alias para compatibilidad con steps-indicator */
 .steps-indicator {
     display: flex;
     justify-content: center;
