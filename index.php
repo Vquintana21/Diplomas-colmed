@@ -30,40 +30,57 @@ $conn->close();
     <!-- Navbar -->
     <nav class="navbar navbar-expand-lg navbar-dark navbar-institucional">
         <div class="container">
-            <a class="navbar-brand" href="index.php">
-                <i class="bi bi-file-earmark-spreadsheet me-2"></i>
-                Carga Masiva de Diplomas
+            <a class="navbar-brand d-flex align-items-center" href="index.php">
+                <img src="assets/img/logo.svg" alt="Logo" height="40" class="me-2">
+                <span>Sistema de Diplomas</span>
             </a>
-            <div class="d-flex gap-2 align-items-center">
-                <?php if ($usuario['rol'] === 'admin'): ?>
-                <a href="convocatorias.php" class="btn btn-outline-light btn-sm">
-                    <i class="bi bi-folder me-1"></i>
-                    Convocatorias
-                </a>
-                <?php endif; ?>
-                <a href="listado.php" class="btn btn-outline-light btn-sm">
-                    <i class="bi bi-list-ul me-1"></i>
-                    Listado
-                </a>
-                <a href="validador.php" class="btn btn-outline-light btn-sm">
-                    <i class="bi bi-patch-check me-1"></i>
-                    Validador
-                </a>
-                <div class="dropdown">
-                    <button class="btn btn-light btn-sm dropdown-toggle" type="button" data-bs-toggle="dropdown">
-                        <i class="bi bi-person-circle me-1"></i>
-                        <?php echo htmlspecialchars($usuario['nombre']); ?>
-                    </button>
-                    <ul class="dropdown-menu dropdown-menu-end">
-                        <li><span class="dropdown-item-text text-muted small">@<?php echo htmlspecialchars($usuario['username']); ?></span></li>
-                        <li><hr class="dropdown-divider"></li>
-                        <?php if ($usuario['rol'] === 'admin'): ?>
-                        <li><a class="dropdown-item" href="admin-usuarios.php"><i class="bi bi-person-gear me-2"></i>Usuarios Permitidos</a></li>
-                        <?php endif; ?>
-                        <li><a class="dropdown-item" href="cambiar-password.php"><i class="bi bi-key me-2"></i>Cambiar Contraseña</a></li>
-                        <li><a class="dropdown-item text-danger" href="logout.php"><i class="bi bi-box-arrow-right me-2"></i>Cerrar Sesión</a></li>
-                    </ul>
-                </div>
+            <button class="navbar-toggler" type="button" data-bs-toggle="collapse" data-bs-target="#navbarMain">
+                <span class="navbar-toggler-icon"></span>
+            </button>
+            <div class="collapse navbar-collapse" id="navbarMain">
+                <ul class="navbar-nav me-auto">
+                    <li class="nav-item">
+                        <a class="nav-link active" href="index.php">
+                            <i class="bi bi-cloud-upload me-1"></i> Cargar
+                        </a>
+                    </li>
+                    <li class="nav-item">
+                        <a class="nav-link" href="listado.php">
+                            <i class="bi bi-list-ul me-1"></i> Listado
+                        </a>
+                    </li>
+                    <?php if ($usuario['rol'] === 'admin'): ?>
+                    <li class="nav-item">
+                        <a class="nav-link" href="convocatorias.php">
+                            <i class="bi bi-folder me-1"></i> Convocatorias
+                        </a>
+                    </li>
+                    <li class="nav-item">
+                        <a class="nav-link" href="admin-usuarios.php">
+                            <i class="bi bi-people me-1"></i> Usuarios
+                        </a>
+                    </li>
+                    <?php endif; ?>
+                    <li class="nav-item">
+                        <a class="nav-link" href="validador.php" target="_blank">
+                            <i class="bi bi-patch-check me-1"></i> Validador
+                        </a>
+                    </li>
+                </ul>
+                <ul class="navbar-nav">
+                    <li class="nav-item dropdown">
+                        <a class="nav-link dropdown-toggle" href="#" data-bs-toggle="dropdown">
+                            <i class="bi bi-person-circle me-1"></i>
+                            <?php echo htmlspecialchars($usuario['nombre']); ?>
+                        </a>
+                        <ul class="dropdown-menu dropdown-menu-end">
+                            <li><span class="dropdown-item-text text-muted small">@<?php echo htmlspecialchars($usuario['username']); ?></span></li>
+                            <li><hr class="dropdown-divider"></li>
+                            <li><a class="dropdown-item" href="cambiar-password.php"><i class="bi bi-key me-2"></i>Cambiar Contraseña</a></li>
+                            <li><a class="dropdown-item text-danger" href="logout.php"><i class="bi bi-box-arrow-right me-2"></i>Cerrar Sesión</a></li>
+                        </ul>
+                    </li>
+                </ul>
             </div>
         </div>
     </nav>
