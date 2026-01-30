@@ -1,0 +1,720 @@
+<html xmlns:o="urn:schemas-microsoft-com:office:office"
+xmlns:w="urn:schemas-microsoft-com:office:word"
+xmlns="http://www.w3.org/TR/REC-html40">
+<head>
+<meta charset="UTF-8">
+<meta http-equiv="Content-Type" content="text/html; charset=UTF-8">
+<title>Manual de Gestión de Usuarios - Sistema de Diplomas COLMED</title>
+<!--[if gte mso 9]>
+<xml>
+<w:WordDocument>
+<w:View>Print</w:View>
+<w:Zoom>100</w:Zoom>
+<w:DoNotOptimizeForBrowser/>
+</w:WordDocument>
+</xml>
+<![endif]-->
+<style>
+@page {
+    size: letter;
+    margin: 2.5cm 2cm 2.5cm 2cm;
+}
+body {
+    font-family: 'Calibri', 'Arial', sans-serif;
+    font-size: 11pt;
+    line-height: 1.5;
+    color: #333;
+}
+h1 {
+    font-size: 24pt;
+    color: #1a5276;
+    text-align: center;
+    border-bottom: 3px solid #1a5276;
+    padding-bottom: 10pt;
+    margin-top: 0;
+}
+h2 {
+    font-size: 16pt;
+    color: #1a5276;
+    border-bottom: 1px solid #aed6f1;
+    padding-bottom: 5pt;
+    margin-top: 20pt;
+}
+h3 {
+    font-size: 13pt;
+    color: #2874a6;
+    margin-top: 15pt;
+}
+h4 {
+    font-size: 11pt;
+    color: #1a5276;
+    margin-top: 12pt;
+}
+.subtitle {
+    font-size: 14pt;
+    color: #666;
+    text-align: center;
+    margin-bottom: 30pt;
+}
+table {
+    border-collapse: collapse;
+    width: 100%;
+    margin: 10pt 0;
+}
+th {
+    background-color: #1a5276;
+    color: white;
+    padding: 8pt;
+    text-align: left;
+    border: 1px solid #1a5276;
+}
+td {
+    padding: 8pt;
+    border: 1px solid #ddd;
+}
+tr:nth-child(even) {
+    background-color: #f8f9fa;
+}
+.note {
+    background-color: #fff3cd;
+    border-left: 4px solid #ffc107;
+    padding: 10pt;
+    margin: 10pt 0;
+}
+.important {
+    background-color: #f8d7da;
+    border-left: 4px solid #dc3545;
+    padding: 10pt;
+    margin: 10pt 0;
+}
+.info {
+    background-color: #d1ecf1;
+    border-left: 4px solid #17a2b8;
+    padding: 10pt;
+    margin: 10pt 0;
+}
+.code {
+    font-family: 'Consolas', 'Courier New', monospace;
+    background-color: #f4f4f4;
+    padding: 10pt;
+    border: 1px solid #ddd;
+    margin: 10pt 0;
+    font-size: 10pt;
+}
+.diagram {
+    font-family: 'Consolas', 'Courier New', monospace;
+    background-color: #f8f9fa;
+    padding: 15pt;
+    border: 2px solid #1a5276;
+    margin: 15pt 0;
+    font-size: 9pt;
+    white-space: pre;
+}
+ul, ol {
+    margin-left: 20pt;
+}
+li {
+    margin-bottom: 5pt;
+}
+.page-break {
+    page-break-before: always;
+}
+.toc {
+    background-color: #f8f9fa;
+    padding: 15pt;
+    border: 1px solid #ddd;
+}
+.toc-title {
+    font-size: 14pt;
+    font-weight: bold;
+    color: #1a5276;
+    margin-bottom: 10pt;
+}
+.footer {
+    font-size: 9pt;
+    color: #666;
+    text-align: center;
+    margin-top: 30pt;
+    border-top: 1px solid #ddd;
+    padding-top: 10pt;
+}
+</style>
+</head>
+<body>
+
+<!-- PORTADA -->
+<div style="text-align: center; margin-top: 150pt;">
+    <img src="assets/img/logo.svg" alt="Logo COLMED" style="width: 120pt; height: auto;">
+    <h1 style="border: none; margin-top: 30pt;">MANUAL DE GESTIÓN DE USUARIOS</h1>
+    <p class="subtitle">Sistema de Diplomas COLMED</p>
+    <p style="font-size: 12pt; color: #666; margin-top: 50pt;">
+        Versión 1.0<br>
+        Enero 2026
+    </p>
+</div>
+
+<div class="page-break"></div>
+
+<!-- TABLA DE CONTENIDOS -->
+<div class="toc">
+    <p class="toc-title">TABLA DE CONTENIDOS</p>
+    <ol>
+        <li>Flujo General de Acceso</li>
+        <li>Configuración Inicial del Sistema</li>
+        <li>Panel de Administración de Usuarios</li>
+        <li>Agregar Usuario Permitido (Autorizar)</li>
+        <li>Registro de Usuario</li>
+        <li>Estados de Usuario</li>
+        <li>Acciones de Administración</li>
+        <li>Roles del Sistema</li>
+        <li>Seguridad y Auditoría</li>
+        <li>Preguntas Frecuentes</li>
+        <li>Estructura de Base de Datos</li>
+    </ol>
+</div>
+
+<div class="page-break"></div>
+
+<!-- CONTENIDO -->
+<h2>1. Flujo General de Acceso</h2>
+
+<p>El sistema implementa un modelo de <strong>autorización previa</strong> donde los usuarios deben ser autorizados por un administrador antes de poder registrarse.</p>
+
+<div class="diagram">
+┌─────────────────────────────────────────────────────────────────────┐
+│                      FLUJO DE ACCESO AL SISTEMA                     │
+├─────────────────────────────────────────────────────────────────────┤
+│                                                                     │
+│   1. ADMIN AUTORIZA          2. USUARIO SE REGISTRA                 │
+│   ┌─────────────┐            ┌─────────────┐                        │
+│   │  Agrega RUT │  ───────►  │  Ingresa    │                        │
+│   │  y datos    │            │  sus datos  │                        │
+│   └─────────────┘            └─────────────┘                        │
+│         │                           │                               │
+│         ▼                           ▼                               │
+│   ┌─────────────┐            ┌─────────────┐                        │
+│   │  Usuario    │            │  Sistema    │                        │
+│   │  PENDIENTE  │            │  valida RUT │                        │
+│   └─────────────┘            └─────────────┘                        │
+│                                     │                               │
+│                                     ▼                               │
+│                              ┌─────────────┐                        │
+│                              │  Usuario    │                        │
+│                              │  REGISTRADO │                        │
+│                              └─────────────┘                        │
+│                                     │                               │
+│                                     ▼                               │
+│                              ┌─────────────┐                        │
+│                              │   ACCESO    │                        │
+│                              │  AL SISTEMA │                        │
+│                              └─────────────┘                        │
+│                                                                     │
+└─────────────────────────────────────────────────────────────────────┘
+</div>
+
+<div class="page-break"></div>
+
+<h2>2. Configuración Inicial del Sistema</h2>
+
+<h3>2.1 Primera Instalación</h3>
+
+<p>Al instalar el sistema por primera vez, el desarrollador debe insertar manualmente un registro de administrador en la base de datos:</p>
+
+<div class="code">
+-- Insertar usuario administrador inicial en z_usuarios_permitidos<br>
+INSERT INTO z_usuarios_permitidos (rut, nombre, email, rol, activo, fecha_agregado)<br>
+VALUES ('12345678-9', 'Administrador Principal', 'admin@colmed.cl', 'admin', 1, NOW());
+</div>
+
+<div class="important">
+<strong>Importante:</strong> Este RUT debe corresponder a una persona real que será el primer administrador del sistema. Una vez registrado, este usuario podrá agregar a otros usuarios y administradores.
+</div>
+
+<h3>2.2 Pasos del Primer Administrador</h3>
+
+<ol>
+    <li>Acceder a la página de registro (<code>registro.php</code>)</li>
+    <li>Ingresar el RUT previamente cargado por el desarrollador</li>
+    <li>Completar el formulario de registro (contraseña, etc.)</li>
+    <li>Iniciar sesión con las credenciales creadas</li>
+    <li>Acceder al panel de administración de usuarios</li>
+</ol>
+
+<div class="page-break"></div>
+
+<h2>3. Panel de Administración de Usuarios</h2>
+
+<h3>3.1 Acceso</h3>
+
+<table>
+    <tr>
+        <th>Elemento</th>
+        <th>Valor</th>
+    </tr>
+    <tr>
+        <td><strong>URL</strong></td>
+        <td>admin-usuarios.php</td>
+    </tr>
+    <tr>
+        <td><strong>Requisito</strong></td>
+        <td>Rol de administrador</td>
+    </tr>
+    <tr>
+        <td><strong>Ubicación</strong></td>
+        <td>Menú superior → "Admin Usuarios"</td>
+    </tr>
+</table>
+
+<h3>3.2 Vista General - Indicadores</h3>
+
+<p>El panel muestra tres indicadores principales:</p>
+
+<table>
+    <tr>
+        <th>Indicador</th>
+        <th>Descripción</th>
+    </tr>
+    <tr>
+        <td><strong>Total Autorizados</strong></td>
+        <td>Cantidad total de usuarios en la lista de permitidos</td>
+    </tr>
+    <tr>
+        <td><strong>Ya Registrados</strong></td>
+        <td>Usuarios que completaron su registro</td>
+    </tr>
+    <tr>
+        <td><strong>Pendientes de Registro</strong></td>
+        <td>Usuarios autorizados que aún no se registran</td>
+    </tr>
+</table>
+
+<div class="page-break"></div>
+
+<h2>4. Agregar Usuario Permitido (Autorizar)</h2>
+
+<h3>4.1 Proceso</h3>
+
+<ol>
+    <li>En el panel de administración, completar el formulario "Agregar Usuario Permitido"</li>
+    <li>Campos requeridos:
+        <ul>
+            <li><strong>RUT:</strong> Formato sin puntos, con guión (ej: 12345678-9)</li>
+            <li><strong>Nombre Completo:</strong> Nombre del usuario</li>
+            <li><strong>Email:</strong> Opcional, para referencia</li>
+            <li><strong>Rol:</strong> Usuario o Administrador</li>
+        </ul>
+    </li>
+    <li>Hacer clic en "Agregar"</li>
+</ol>
+
+<h3>4.2 Resultado</h3>
+
+<p>El usuario queda en estado <strong>PENDIENTE</strong> hasta que complete su registro.</p>
+
+<div class="info">
+<strong>Estado: PENDIENTE</strong><br><br>
+RUT: 12345678-9<br>
+Nombre: Juan Pérez<br>
+Rol: Usuario<br>
+Estado: Activo<br>
+Registrado: Pendiente
+</div>
+
+<div class="page-break"></div>
+
+<h2>5. Registro de Usuario</h2>
+
+<h3>5.1 Proceso (desde la perspectiva del usuario)</h3>
+
+<ol>
+    <li>El usuario accede a <code>registro.php</code></li>
+    <li>Ingresa su RUT (debe estar previamente autorizado)</li>
+    <li>Si el RUT está autorizado y activo:
+        <ul>
+            <li>Completa el formulario de registro</li>
+            <li>Crea su contraseña</li>
+            <li>El sistema lo registra en z_usuarios</li>
+        </ul>
+    </li>
+    <li>Si el RUT <strong>no está</strong> autorizado:
+        <ul>
+            <li>El sistema rechaza el registro</li>
+            <li>Muestra mensaje indicando que debe contactar al administrador</li>
+        </ul>
+    </li>
+</ol>
+
+<h3>5.2 Validaciones del Sistema</h3>
+
+<table>
+    <tr>
+        <th>Validación</th>
+        <th>Resultado</th>
+    </tr>
+    <tr>
+        <td>RUT no autorizado</td>
+        <td>Registro rechazado</td>
+    </tr>
+    <tr>
+        <td>RUT autorizado pero bloqueado</td>
+        <td>Registro rechazado</td>
+    </tr>
+    <tr>
+        <td>RUT ya registrado</td>
+        <td>Mensaje de error (ya existe cuenta)</td>
+    </tr>
+    <tr>
+        <td>RUT autorizado y activo</td>
+        <td>Registro permitido</td>
+    </tr>
+</table>
+
+<div class="page-break"></div>
+
+<h2>6. Estados de Usuario</h2>
+
+<h3>6.1 Matriz de Estados</h3>
+
+<table>
+    <tr>
+        <th>Estado</th>
+        <th>Autorizado</th>
+        <th>Registrado</th>
+        <th>Activo</th>
+        <th>Puede Acceder</th>
+    </tr>
+    <tr>
+        <td>Pendiente</td>
+        <td>Sí</td>
+        <td>No</td>
+        <td>Sí</td>
+        <td>No (sin cuenta)</td>
+    </tr>
+    <tr>
+        <td>Registrado Activo</td>
+        <td>Sí</td>
+        <td>Sí</td>
+        <td>Sí</td>
+        <td><strong>Sí</strong></td>
+    </tr>
+    <tr>
+        <td>Registrado Bloqueado</td>
+        <td>Sí</td>
+        <td>Sí</td>
+        <td>No</td>
+        <td>No</td>
+    </tr>
+    <tr>
+        <td>Pendiente Bloqueado</td>
+        <td>Sí</td>
+        <td>No</td>
+        <td>No</td>
+        <td>No</td>
+    </tr>
+</table>
+
+<div class="page-break"></div>
+
+<h2>7. Acciones de Administración</h2>
+
+<h3>7.1 Activar / Bloquear Usuario</h3>
+
+<p><strong>Icono:</strong> Toggle (interruptor)</p>
+
+<table>
+    <tr>
+        <th>Estado Actual</th>
+        <th>Acción</th>
+        <th>Resultado</th>
+    </tr>
+    <tr>
+        <td>Activo</td>
+        <td>Bloquear</td>
+        <td>Usuario no puede acceder al sistema</td>
+    </tr>
+    <tr>
+        <td>Bloqueado</td>
+        <td>Activar</td>
+        <td>Usuario recupera acceso</td>
+    </tr>
+</table>
+
+<p><strong>Uso:</strong> Click en el botón de toggle en la columna "Acciones"</p>
+
+<div class="note">
+<strong>Nota:</strong> Bloquear un usuario no elimina sus datos. Es útil para suspensiones temporales.
+</div>
+
+<h3>7.2 Eliminar Usuario Pendiente</h3>
+
+<p><strong>Icono:</strong> Papelera (outline)</p>
+
+<p><strong>Aplica a:</strong> Usuarios que <strong>NO</strong> han completado el registro</p>
+
+<p><strong>Resultado:</strong></p>
+<ul>
+    <li>Elimina el registro de z_usuarios_permitidos</li>
+    <li>El RUT ya no está autorizado para registrarse</li>
+</ul>
+
+<p><strong>Confirmación:</strong> Diálogo simple de confirmación</p>
+
+<h3>7.3 Eliminar Usuario Registrado</h3>
+
+<p><strong>Icono:</strong> Persona con X (rojo sólido)</p>
+
+<p><strong>Aplica a:</strong> Usuarios que <strong>SÍ</strong> han completado el registro</p>
+
+<p><strong>Resultado:</strong></p>
+<ul>
+    <li>Elimina la cuenta del usuario de z_usuarios</li>
+    <li>Elimina el permiso de z_usuarios_permitidos</li>
+    <li>El usuario pierde todo acceso al sistema</li>
+    <li>Se registra en el log de seguridad</li>
+</ul>
+
+<p><strong>Confirmación:</strong> Modal de advertencia con detalles del usuario</p>
+
+<div class="important">
+<strong>⚠️ Eliminar Usuario Registrado</strong><br><br>
+¡Atención! Esta acción eliminará completamente al usuario del sistema.<br><br>
+<strong>Nombre:</strong> Juan Pérez González<br>
+<strong>RUT:</strong> 12345678-9<br><br>
+Se eliminará tanto su cuenta como su permiso de acceso. Esta acción no se puede deshacer.
+</div>
+
+<div class="note">
+<strong>Restricción:</strong> Un administrador no puede eliminarse a sí mismo.
+</div>
+
+<div class="page-break"></div>
+
+<h3>7.4 Tabla Resumen de Acciones</h3>
+
+<table>
+    <tr>
+        <th>Acción</th>
+        <th>Usuario Pendiente</th>
+        <th>Usuario Registrado</th>
+    </tr>
+    <tr>
+        <td>Activar/Bloquear</td>
+        <td>✓ Disponible</td>
+        <td>✓ Disponible</td>
+    </tr>
+    <tr>
+        <td>Eliminar permiso</td>
+        <td>✓ Disponible</td>
+        <td>✗ No disponible</td>
+    </tr>
+    <tr>
+        <td>Eliminar cuenta completa</td>
+        <td>✗ No aplica</td>
+        <td>✓ Disponible</td>
+    </tr>
+    <tr>
+        <td>Ver en lista</td>
+        <td>Badge "Pendiente"</td>
+        <td>Badge "Sí"</td>
+    </tr>
+</table>
+
+<div class="page-break"></div>
+
+<h2>8. Roles del Sistema</h2>
+
+<h3>8.1 Usuario</h3>
+
+<ul>
+    <li>Acceso a funcionalidades básicas del sistema</li>
+    <li>Carga de diplomas</li>
+    <li>Gestión de convocatorias (según permisos)</li>
+    <li><strong>No puede</strong> administrar usuarios</li>
+</ul>
+
+<h3>8.2 Administrador</h3>
+
+<ul>
+    <li>Todas las funcionalidades de Usuario</li>
+    <li>Acceso al panel de administración de usuarios</li>
+    <li>Agregar/eliminar usuarios permitidos</li>
+    <li>Activar/bloquear usuarios</li>
+    <li>Asignar roles a nuevos usuarios</li>
+</ul>
+
+<div class="page-break"></div>
+
+<h2>9. Seguridad y Auditoría</h2>
+
+<h3>9.1 Registro de Eventos</h3>
+
+<p>El sistema registra automáticamente en z_log_seguridad:</p>
+
+<table>
+    <tr>
+        <th>Evento</th>
+        <th>Descripción</th>
+    </tr>
+    <tr>
+        <td>usuario_permitido_agregado</td>
+        <td>Cuando se autoriza un nuevo RUT</td>
+    </tr>
+    <tr>
+        <td>usuario_eliminado</td>
+        <td>Cuando se elimina un usuario registrado</td>
+    </tr>
+    <tr>
+        <td>login_exitoso</td>
+        <td>Inicios de sesión</td>
+    </tr>
+    <tr>
+        <td>login_fallido</td>
+        <td>Intentos fallidos de acceso</td>
+    </tr>
+</table>
+
+<h3>9.2 Protecciones Implementadas</h3>
+
+<ul>
+    <li><strong>Token CSRF</strong> en formularios</li>
+    <li><strong>Validación de RUT</strong> formato chileno</li>
+    <li><strong>Prevención de auto-eliminación</strong> (admin no puede eliminarse)</li>
+    <li><strong>Escape de datos</strong> para prevenir inyección SQL y XSS</li>
+</ul>
+
+<div class="page-break"></div>
+
+<h2>10. Preguntas Frecuentes</h2>
+
+<h3>¿Qué pasa si un usuario olvida su contraseña?</h3>
+
+<p>El usuario debe contactar al administrador. El administrador puede:</p>
+<ol>
+    <li>Bloquear y eliminar la cuenta actual</li>
+    <li>Volver a agregar el RUT como permitido</li>
+    <li>El usuario se registra nuevamente</li>
+</ol>
+
+<h3>¿Puedo tener múltiples administradores?</h3>
+
+<p>Sí. Al agregar un usuario permitido, seleccione el rol "Administrador". Cada administrador tendrá acceso completo al panel de gestión de usuarios.</p>
+
+<h3>¿Qué sucede si bloqueo a un usuario que está logueado?</h3>
+
+<p>El usuario podrá continuar su sesión actual, pero no podrá iniciar sesión nuevamente una vez que la sesión expire o cierre sesión.</p>
+
+<h3>¿Puedo reactivar un usuario eliminado?</h3>
+
+<p>Si se eliminó completamente (usuario registrado), debe:</p>
+<ol>
+    <li>Agregarlo nuevamente como usuario permitido</li>
+    <li>El usuario debe registrarse de nuevo</li>
+</ol>
+
+<p>Si solo estaba bloqueado, simplemente actívelo con el toggle.</p>
+
+<div class="page-break"></div>
+
+<h2>11. Estructura de Base de Datos</h2>
+
+<h3>11.1 Tabla: z_usuarios_permitidos</h3>
+
+<table>
+    <tr>
+        <th>Campo</th>
+        <th>Tipo</th>
+        <th>Descripción</th>
+    </tr>
+    <tr>
+        <td>id</td>
+        <td>INT</td>
+        <td>Identificador único</td>
+    </tr>
+    <tr>
+        <td>rut</td>
+        <td>VARCHAR(12)</td>
+        <td>RUT del usuario</td>
+    </tr>
+    <tr>
+        <td>nombre</td>
+        <td>VARCHAR(255)</td>
+        <td>Nombre completo</td>
+    </tr>
+    <tr>
+        <td>email</td>
+        <td>VARCHAR(255)</td>
+        <td>Email (opcional)</td>
+    </tr>
+    <tr>
+        <td>rol</td>
+        <td>VARCHAR(20)</td>
+        <td>'usuario' o 'admin'</td>
+    </tr>
+    <tr>
+        <td>activo</td>
+        <td>TINYINT(1)</td>
+        <td>1 = activo, 0 = bloqueado</td>
+    </tr>
+    <tr>
+        <td>fecha_agregado</td>
+        <td>DATETIME</td>
+        <td>Fecha de autorización</td>
+    </tr>
+</table>
+
+<h3>11.2 Tabla: z_usuarios</h3>
+
+<table>
+    <tr>
+        <th>Campo</th>
+        <th>Tipo</th>
+        <th>Descripción</th>
+    </tr>
+    <tr>
+        <td>id</td>
+        <td>INT</td>
+        <td>Identificador único</td>
+    </tr>
+    <tr>
+        <td>rut</td>
+        <td>VARCHAR(12)</td>
+        <td>RUT (FK a z_usuarios_permitidos)</td>
+    </tr>
+    <tr>
+        <td>nombre</td>
+        <td>VARCHAR(255)</td>
+        <td>Nombre del usuario</td>
+    </tr>
+    <tr>
+        <td>email</td>
+        <td>VARCHAR(255)</td>
+        <td>Email del usuario</td>
+    </tr>
+    <tr>
+        <td>password_hash</td>
+        <td>VARCHAR(255)</td>
+        <td>Contraseña encriptada</td>
+    </tr>
+    <tr>
+        <td>rol</td>
+        <td>VARCHAR(20)</td>
+        <td>Rol asignado</td>
+    </tr>
+    <tr>
+        <td>fecha_registro</td>
+        <td>DATETIME</td>
+        <td>Fecha de registro</td>
+    </tr>
+</table>
+
+<div class="page-break"></div>
+
+<div class="footer">
+    <p><strong>Sistema de Diplomas COLMED</strong></p>
+    <p>Manual de Gestión de Usuarios v1.0</p>
+    <p>Documento actualizado: Enero 2026</p>
+    <p>Para soporte técnico o consultas, contactar al área de sistemas.</p>
+</div>
+
+</body>
+</html>
