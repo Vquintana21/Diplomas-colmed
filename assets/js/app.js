@@ -116,18 +116,24 @@ window.AppUtils = (function() {
     var btnProcesar;
     
     // ============================================
-    // INICIALIZACION
+    // INICIALIZACION (solo para página de carga de diplomas)
     // ============================================
     function init() {
+        // Solo inicializar en la página de carga de diplomas (index.php)
+        var pagina = document.body.getAttribute('data-pagina');
+        if (pagina !== 'carga-diplomas') {
+            return; // No es la página de diplomas, no inicializar
+        }
+
         uploadZone = document.getElementById('uploadZone');
         archivoInput = document.getElementById('archivoInput');
         formCarga = document.getElementById('formCarga');
         btnProcesar = document.getElementById('btnProcesar');
-        
-        if (!uploadZone || !formCarga) return; // No estamos en la página de carga
-        
+
+        if (!uploadZone || !formCarga) return;
+
         document.getElementById('sessionId').value = sessionId;
-        
+
         setupUploadZone();
         setupFormSubmit();
         setupButtons();
