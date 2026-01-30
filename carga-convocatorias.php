@@ -403,7 +403,7 @@ $conn->close();
         var sessionId = document.getElementById('sessionId').value;
         var datosRegistros = [];
         var registrosRechazados = [];
-        var modalCargando = new bootstrap.Modal(document.getElementById('modalCargando'));
+        var modalCargandoElement = document.getElementById('modalCargando');
         
         // Elementos DOM
         var uploadZone = document.getElementById('uploadZone');
@@ -780,22 +780,37 @@ $conn->close();
         }
         
         function mostrarModal(texto) {
-            document.getElementById('textoCargando').textContent = texto;
-            modalCargando.show();
+            document.getElementById('textoCargando').textContent = texto || 'Procesando...';
+            var modal = bootstrap.Modal.getOrCreateInstance(modalCargandoElement);
+            modal.show();
         }
 
         function ocultarModal() {
-            modalCargando.hide();
-            // Asegurar que el backdrop se remueva correctamente
+            var modal = bootstrap.Modal.getInstance(modalCargandoElement);
+
+            if (modal) {
+                modal.hide();
+            }
+
+            // Limpieza completa del modal (igual que app.js)
             setTimeout(function() {
-                var backdrop = document.querySelector('.modal-backdrop');
-                if (backdrop) {
-                    backdrop.remove();
-                }
                 document.body.classList.remove('modal-open');
                 document.body.style.removeProperty('padding-right');
                 document.body.style.removeProperty('overflow');
-            }, 300);
+
+                // Remover TODOS los backdrops
+                var backdrops = document.querySelectorAll('.modal-backdrop');
+                backdrops.forEach(function(backdrop) {
+                    backdrop.remove();
+                });
+
+                // Limpiar el elemento modal directamente
+                modalCargandoElement.classList.remove('show');
+                modalCargandoElement.style.display = 'none';
+                modalCargandoElement.setAttribute('aria-hidden', 'true');
+                modalCargandoElement.removeAttribute('aria-modal');
+                modalCargandoElement.removeAttribute('role');
+            }, 150);
         }
         
         function mostrarAlerta(tipo, mensaje) {
