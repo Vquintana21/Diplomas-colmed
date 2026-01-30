@@ -487,14 +487,15 @@ $conn->close();
             
             var xhr = new XMLHttpRequest();
             xhr.open('POST', 'procesar-carga-convocatorias.php', true);
-            
+            xhr.timeout = 60000; // 60 segundos timeout
+
             xhr.onload = function() {
                 ocultarModal();
-                
+
                 if (xhr.status === 200) {
                     try {
                         var response = JSON.parse(xhr.responseText);
-                        
+
                         if (response.success) {
                             datosRegistros = response.registros;
                             mostrarPreview(response);
@@ -509,12 +510,17 @@ $conn->close();
                     mostrarAlerta('danger', 'Error de conexión con el servidor');
                 }
             };
-            
+
             xhr.onerror = function() {
                 ocultarModal();
                 mostrarAlerta('danger', 'Error de conexión');
             };
-            
+
+            xhr.ontimeout = function() {
+                ocultarModal();
+                mostrarAlerta('danger', 'El servidor tardó demasiado en responder. Intente nuevamente.');
+            };
+
             xhr.send(formData);
         });
         
@@ -657,10 +663,11 @@ $conn->close();
             
             var xhr = new XMLHttpRequest();
             xhr.open('POST', 'confirmar-carga-convocatorias.php', true);
-            
+            xhr.timeout = 60000; // 60 segundos timeout
+
             xhr.onload = function() {
                 ocultarModal();
-                
+
                 if (xhr.status === 200) {
                     try {
                         var response = JSON.parse(xhr.responseText);
@@ -672,12 +679,17 @@ $conn->close();
                     mostrarAlerta('danger', 'Error de conexión');
                 }
             };
-            
+
             xhr.onerror = function() {
                 ocultarModal();
                 mostrarAlerta('danger', 'Error de conexión');
             };
-            
+
+            xhr.ontimeout = function() {
+                ocultarModal();
+                mostrarAlerta('danger', 'El servidor tardó demasiado en responder. Intente nuevamente.');
+            };
+
             xhr.send(formData);
         }
         
@@ -771,9 +783,19 @@ $conn->close();
             document.getElementById('textoCargando').textContent = texto;
             modalCargando.show();
         }
-        
+
         function ocultarModal() {
             modalCargando.hide();
+            // Asegurar que el backdrop se remueva correctamente
+            setTimeout(function() {
+                var backdrop = document.querySelector('.modal-backdrop');
+                if (backdrop) {
+                    backdrop.remove();
+                }
+                document.body.classList.remove('modal-open');
+                document.body.style.removeProperty('padding-right');
+                document.body.style.removeProperty('overflow');
+            }, 300);
         }
         
         function mostrarAlerta(tipo, mensaje) {
