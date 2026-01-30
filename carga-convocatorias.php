@@ -397,13 +397,14 @@ $conn->close();
     </div>
     
     <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.2/dist/js/bootstrap.bundle.min.js"></script>
+    <!-- Utilidades compartidas (AppUtils) -->
+    <script src="assets/js/app.js"></script>
     <script>
     (function() {
         // Variables globales
         var sessionId = document.getElementById('sessionId').value;
         var datosRegistros = [];
         var registrosRechazados = [];
-        var modalCargandoElement = document.getElementById('modalCargando');
         
         // Elementos DOM
         var uploadZone = document.getElementById('uploadZone');
@@ -779,64 +780,31 @@ $conn->close();
             location.reload();
         }
         
+        // Usar funciones de AppUtils (de app.js)
         function mostrarModal(texto) {
-            document.getElementById('textoCargando').textContent = texto || 'Procesando...';
-            var modal = bootstrap.Modal.getOrCreateInstance(modalCargandoElement);
-            modal.show();
+            AppUtils.mostrarModal(texto);
         }
 
         function ocultarModal() {
-            var modal = bootstrap.Modal.getInstance(modalCargandoElement);
-
-            if (modal) {
-                modal.hide();
-            }
-
-            // Limpieza completa del modal (igual que app.js)
-            setTimeout(function() {
-                document.body.classList.remove('modal-open');
-                document.body.style.removeProperty('padding-right');
-                document.body.style.removeProperty('overflow');
-
-                // Remover TODOS los backdrops
-                var backdrops = document.querySelectorAll('.modal-backdrop');
-                backdrops.forEach(function(backdrop) {
-                    backdrop.remove();
-                });
-
-                // Limpiar el elemento modal directamente
-                modalCargandoElement.classList.remove('show');
-                modalCargandoElement.style.display = 'none';
-                modalCargandoElement.setAttribute('aria-hidden', 'true');
-                modalCargandoElement.removeAttribute('aria-modal');
-                modalCargandoElement.removeAttribute('role');
-            }, 150);
+            AppUtils.ocultarModal();
         }
-        
+
         function mostrarAlerta(tipo, mensaje) {
+            // Alerta local para esta página (alertaGlobal)
             var alertDiv = document.createElement('div');
             alertDiv.className = 'alert alert-' + tipo + ' alert-dismissible fade show';
             alertDiv.innerHTML = '<i class="bi bi-' + (tipo === 'success' ? 'check-circle' : 'exclamation-circle') + ' me-2"></i>' +
                 mensaje + '<button type="button" class="btn-close" data-bs-dismiss="alert"></button>';
-            
             document.getElementById('alertaGlobal').appendChild(alertDiv);
-            
-            setTimeout(function() {
-                alertDiv.remove();
-            }, 5000);
+            setTimeout(function() { alertDiv.remove(); }, 5000);
         }
-        
+
         function formatearTamano(bytes) {
-            if (bytes < 1024) return bytes + ' bytes';
-            if (bytes < 1024 * 1024) return (bytes / 1024).toFixed(1) + ' KB';
-            return (bytes / (1024 * 1024)).toFixed(1) + ' MB';
+            return AppUtils.formatBytes(bytes);
         }
-        
+
         function escapeHtml(text) {
-            if (!text) return '';
-            var div = document.createElement('div');
-            div.appendChild(document.createTextNode(text));
-            return div.innerHTML;
+            return AppUtils.escapeHtml(text);
         }
         
     })();

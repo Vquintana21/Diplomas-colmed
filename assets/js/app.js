@@ -662,5 +662,18 @@
     // INICIAR
     // ============================================
     document.addEventListener('DOMContentLoaded', init);
-    
+
+    // ============================================
+    // EXPONER UTILIDADES GLOBALMENTE
+    // Para reutilizar en otras páginas (carga-convocatorias, etc.)
+    // ============================================
+    window.AppUtils = {
+        mostrarModal: mostrarModalCargando,
+        ocultarModal: ocultarModalCargando,
+        mostrarAlerta: mostrarAlerta,
+        ocultarAlerta: ocultarAlerta,
+        formatBytes: formatBytes,
+        escapeHtml: escapeHtml
+    };
+
 })();
