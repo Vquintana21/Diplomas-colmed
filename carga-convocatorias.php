@@ -90,14 +90,25 @@ $conn->close();
             </div>
             
             <div class="card-body p-4">
-                
+
                 <!-- Indicador de Pasos -->
-                <div class="step-indicator">
-                    <div class="step active" id="stepIndicator1">1</div>
-                    <div class="line" id="lineIndicator1"></div>
-                    <div class="step" id="stepIndicator2">2</div>
-                    <div class="line" id="lineIndicator2"></div>
-                    <div class="step" id="stepIndicator3">3</div>
+                <div class="steps-container mb-4">
+                    <div class="d-flex justify-content-center">
+                        <div class="step active" id="stepIndicator1">
+                            <div class="step-number">1</div>
+                            <div class="step-label">Subir Archivo</div>
+                        </div>
+                        <div class="step-line" id="lineIndicator1"></div>
+                        <div class="step" id="stepIndicator2">
+                            <div class="step-number">2</div>
+                            <div class="step-label">Validar Datos</div>
+                        </div>
+                        <div class="step-line" id="lineIndicator2"></div>
+                        <div class="step" id="stepIndicator3">
+                            <div class="step-number">3</div>
+                            <div class="step-label">Confirmar</div>
+                        </div>
+                    </div>
                 </div>
                 
                 <!-- ========================================= -->
