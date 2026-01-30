@@ -124,6 +124,48 @@ if (isset($_GET['toggle'])) {
     $tipo_mensaje = 'info';
 }
 
+// Eliminar usuario registrado (de z_usuarios)
+if (isset($_GET['eliminar_registrado'])) {
+    $id = intval($_GET['eliminar_registrado']);
+
+    // Obtener datos del usuario permitido
+    $query = "SELECT up.id, up.rut, up.nombre, u.id as usuario_id
+              FROM z_usuarios_permitidos up
+              LEFT JOIN z_usuarios u ON up.rut = u.rut
+              WHERE up.id = $id";
+    $result = $conn->query($query);
+
+    if ($result && $result->num_rows > 0) {
+        $row = $result->fetch_assoc();
+
+        // No permitir eliminarse a sí mismo
+        if ($row['usuario_id'] == $usuario['id']) {
+            $mensaje = 'No puede eliminarse a sí mismo.';
+            $tipo_mensaje = 'danger';
+        } else {
+            $rut_usuario = $row['rut'];
+            $nombre_usuario = $row['nombre'];
+
+            // Eliminar de z_usuarios si está registrado
+            if ($row['usuario_id']) {
+                $conn->query("DELETE FROM z_usuarios WHERE id = " . intval($row['usuario_id']));
+            }
+
+            // Eliminar de z_usuarios_permitidos
+            if ($conn->query("DELETE FROM z_usuarios_permitidos WHERE id = $id")) {
+                $mensaje = "Usuario \"$nombre_usuario\" ($rut_usuario) eliminado completamente del sistema.";
+                $tipo_mensaje = 'success';
+
+                // Registrar evento de seguridad
+                registrarEventoSeguridad('usuario_eliminado', "RUT: $rut_usuario, Nombre: $nombre_usuario", $usuario['id']);
+            } else {
+                $mensaje = 'Error al eliminar el usuario.';
+                $tipo_mensaje = 'danger';
+            }
+        }
+    }
+}
+
 // Obtener lista de usuarios permitidos
 $query = "SELECT up.*, 
           (SELECT COUNT(*) FROM z_usuarios u WHERE u.rut = up.rut) as registrado
@@ -320,10 +362,16 @@ $conn->close();
                                                     <i class="bi bi-toggle-<?php echo $up['activo'] ? 'on' : 'off'; ?>"></i>
                                                 </a>
                                                 <?php if ($up['registrado'] == 0): ?>
-                                                <a href="?eliminar=<?php echo $up['id']; ?>" class="btn btn-outline-danger btn-action" 
-                                                   onclick="return confirm('¿Está seguro de eliminar este usuario permitido?')" title="Eliminar">
+                                                <a href="?eliminar=<?php echo $up['id']; ?>" class="btn btn-outline-danger btn-action"
+                                                   onclick="return confirm('¿Está seguro de eliminar este usuario permitido?')" title="Eliminar permiso">
                                                     <i class="bi bi-trash"></i>
                                                 </a>
+                                                <?php else: ?>
+                                                <button type="button" class="btn btn-danger btn-action"
+                                                        onclick="confirmarEliminarRegistrado(<?php echo $up['id']; ?>, '<?php echo htmlspecialchars($up['nombre'], ENT_QUOTES); ?>', '<?php echo htmlspecialchars($up['rut'], ENT_QUOTES); ?>')"
+                                                        title="Eliminar usuario registrado">
+                                                    <i class="bi bi-person-x"></i>
+                                                </button>
                                                 <?php endif; ?>
                                             </div>
                                         </td>
@@ -339,6 +387,44 @@ $conn->close();
         
     </div>
     
+    <!-- Modal de confirmación para eliminar usuario registrado -->
+    <div class="modal fade" id="modalEliminarRegistrado" tabindex="-1" aria-hidden="true">
+        <div class="modal-dialog">
+            <div class="modal-content">
+                <div class="modal-header bg-danger text-white">
+                    <h5 class="modal-title">
+                        <i class="bi bi-exclamation-triangle me-2"></i>
+                        Eliminar Usuario Registrado
+                    </h5>
+                    <button type="button" class="btn-close btn-close-white" data-bs-dismiss="modal"></button>
+                </div>
+                <div class="modal-body">
+                    <div class="alert alert-warning">
+                        <i class="bi bi-exclamation-circle me-2"></i>
+                        <strong>¡Atención!</strong> Esta acción eliminará completamente al usuario del sistema.
+                    </div>
+                    <p>¿Está seguro de eliminar al usuario:</p>
+                    <ul class="list-unstyled ms-3">
+                        <li><strong>Nombre:</strong> <span id="elimNombre"></span></li>
+                        <li><strong>RUT:</strong> <span id="elimRut"></span></li>
+                    </ul>
+                    <p class="text-danger mb-0">
+                        <i class="bi bi-info-circle me-1"></i>
+                        Se eliminará tanto su cuenta como su permiso de acceso. Esta acción no se puede deshacer.
+                    </p>
+                </div>
+                <div class="modal-footer">
+                    <button type="button" class="btn btn-secondary" data-bs-dismiss="modal">
+                        <i class="bi bi-x-lg me-1"></i> Cancelar
+                    </button>
+                    <a href="#" id="btnConfirmarEliminar" class="btn btn-danger">
+                        <i class="bi bi-trash me-1"></i> Eliminar Usuario
+                    </a>
+                </div>
+            </div>
+        </div>
+    </div>
+
     <!-- jQuery -->
     <script src="https://code.jquery.com/jquery-3.7.1.min.js"></script>
     <!-- Bootstrap JS -->
@@ -367,6 +453,20 @@ $conn->close();
             e.target.value = valor;
         });
     });
+
+    // Modal para confirmar eliminación de usuario registrado
+    var modalEliminar = null;
+
+    function confirmarEliminarRegistrado(id, nombre, rut) {
+        document.getElementById('elimNombre').textContent = nombre;
+        document.getElementById('elimRut').textContent = rut;
+        document.getElementById('btnConfirmarEliminar').href = '?eliminar_registrado=' + id;
+
+        if (!modalEliminar) {
+            modalEliminar = new bootstrap.Modal(document.getElementById('modalEliminarRegistrado'));
+        }
+        modalEliminar.show();
+    }
     </script>
     
 </body>
