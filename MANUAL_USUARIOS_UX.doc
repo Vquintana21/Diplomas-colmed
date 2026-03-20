@@ -1,0 +1,863 @@
+<html xmlns:o="urn:schemas-microsoft-com:office:office"
+xmlns:w="urn:schemas-microsoft-com:office:word"
+xmlns="http://www.w3.org/TR/REC-html40">
+<head>
+<meta charset="UTF-8">
+<meta http-equiv="Content-Type" content="text/html; charset=UTF-8">
+<title>Guía de Usuario - Sistema de Diplomas COLMED</title>
+<!--[if gte mso 9]>
+<xml>
+<w:WordDocument>
+<w:View>Print</w:View>
+<w:Zoom>100</w:Zoom>
+<w:DoNotOptimizeForBrowser/>
+</w:WordDocument>
+</xml>
+<![endif]-->
+<style>
+@page {
+    size: letter;
+    margin: 2cm 2cm 2cm 2cm;
+}
+body {
+    font-family: 'Segoe UI', 'Arial', sans-serif;
+    font-size: 11pt;
+    line-height: 1.6;
+    color: #333;
+}
+h1 {
+    font-size: 26pt;
+    color: #0d6efd;
+    text-align: center;
+    margin-top: 0;
+}
+h2 {
+    font-size: 18pt;
+    color: #0d6efd;
+    border-left: 5px solid #0d6efd;
+    padding-left: 15pt;
+    margin-top: 25pt;
+}
+h3 {
+    font-size: 14pt;
+    color: #495057;
+    margin-top: 18pt;
+}
+.cover {
+    text-align: center;
+    padding-top: 120pt;
+}
+.cover-logo {
+    font-size: 60pt;
+    color: #0d6efd;
+}
+.cover-subtitle {
+    font-size: 16pt;
+    color: #6c757d;
+    margin-top: 20pt;
+}
+.cover-version {
+    font-size: 11pt;
+    color: #adb5bd;
+    margin-top: 80pt;
+}
+.page-break {
+    page-break-before: always;
+}
+.workflow-box {
+    background: linear-gradient(135deg, #667eea 0%, #764ba2 100%);
+    color: white;
+    padding: 20pt;
+    border-radius: 10pt;
+    margin: 15pt 0;
+    text-align: center;
+}
+.workflow-title {
+    font-size: 14pt;
+    font-weight: bold;
+    margin-bottom: 10pt;
+}
+.step-container {
+    display: table;
+    width: 100%;
+    margin: 20pt 0;
+}
+.step {
+    background: #f8f9fa;
+    border: 2px solid #dee2e6;
+    border-radius: 8pt;
+    padding: 15pt;
+    margin: 10pt 0;
+}
+.step-number {
+    background: #0d6efd;
+    color: white;
+    width: 35pt;
+    height: 35pt;
+    border-radius: 50%;
+    display: inline-block;
+    text-align: center;
+    line-height: 35pt;
+    font-weight: bold;
+    font-size: 14pt;
+    margin-right: 10pt;
+}
+.step-title {
+    font-weight: bold;
+    font-size: 12pt;
+    color: #212529;
+}
+.step-desc {
+    color: #6c757d;
+    margin-top: 8pt;
+    margin-left: 45pt;
+}
+.tip-box {
+    background: #d1e7dd;
+    border-left: 5px solid #198754;
+    padding: 12pt 15pt;
+    margin: 15pt 0;
+    border-radius: 0 8pt 8pt 0;
+}
+.tip-title {
+    color: #198754;
+    font-weight: bold;
+    margin-bottom: 5pt;
+}
+.warning-box {
+    background: #fff3cd;
+    border-left: 5px solid #ffc107;
+    padding: 12pt 15pt;
+    margin: 15pt 0;
+    border-radius: 0 8pt 8pt 0;
+}
+.warning-title {
+    color: #856404;
+    font-weight: bold;
+    margin-bottom: 5pt;
+}
+.danger-box {
+    background: #f8d7da;
+    border-left: 5px solid #dc3545;
+    padding: 12pt 15pt;
+    margin: 15pt 0;
+    border-radius: 0 8pt 8pt 0;
+}
+.danger-title {
+    color: #721c24;
+    font-weight: bold;
+    margin-bottom: 5pt;
+}
+.button-demo {
+    display: inline-block;
+    padding: 8pt 15pt;
+    border-radius: 5pt;
+    font-weight: bold;
+    margin: 5pt;
+}
+.btn-blue { background: #0d6efd; color: white; }
+.btn-green { background: #198754; color: white; }
+.btn-red { background: #dc3545; color: white; }
+.btn-outline-red { background: white; color: #dc3545; border: 2px solid #dc3545; }
+.btn-gray { background: #6c757d; color: white; }
+.screen-mock {
+    border: 2px solid #dee2e6;
+    border-radius: 8pt;
+    margin: 15pt 0;
+    overflow: hidden;
+}
+.screen-header {
+    background: #0d6efd;
+    color: white;
+    padding: 10pt 15pt;
+    font-weight: bold;
+}
+.screen-body {
+    padding: 15pt;
+    background: #f8f9fa;
+}
+.form-field {
+    background: white;
+    border: 1px solid #ced4da;
+    padding: 8pt 12pt;
+    margin: 8pt 0;
+    border-radius: 5pt;
+    color: #6c757d;
+}
+.badge {
+    display: inline-block;
+    padding: 4pt 10pt;
+    border-radius: 15pt;
+    font-size: 9pt;
+    font-weight: bold;
+}
+.badge-green { background: #198754; color: white; }
+.badge-yellow { background: #ffc107; color: #212529; }
+.badge-red { background: #dc3545; color: white; }
+.badge-blue { background: #0d6efd; color: white; }
+.badge-gray { background: #6c757d; color: white; }
+.icon {
+    font-size: 16pt;
+    margin-right: 5pt;
+}
+.flow-arrow {
+    text-align: center;
+    font-size: 24pt;
+    color: #0d6efd;
+    margin: 10pt 0;
+}
+.flow-step {
+    background: white;
+    border: 2px solid #0d6efd;
+    border-radius: 10pt;
+    padding: 15pt;
+    margin: 10pt 0;
+    text-align: center;
+}
+.flow-step-active {
+    background: #0d6efd;
+    color: white;
+}
+.comparison-table {
+    width: 100%;
+    border-collapse: collapse;
+    margin: 15pt 0;
+}
+.comparison-table th {
+    background: #0d6efd;
+    color: white;
+    padding: 12pt;
+    text-align: center;
+}
+.comparison-table td {
+    padding: 12pt;
+    border: 1px solid #dee2e6;
+    text-align: center;
+}
+.comparison-table tr:nth-child(even) {
+    background: #f8f9fa;
+}
+.role-card {
+    border: 2px solid #dee2e6;
+    border-radius: 10pt;
+    padding: 20pt;
+    margin: 15pt 0;
+    text-align: center;
+}
+.role-icon {
+    font-size: 40pt;
+    margin-bottom: 10pt;
+}
+.role-title {
+    font-size: 16pt;
+    font-weight: bold;
+    color: #212529;
+}
+.role-desc {
+    color: #6c757d;
+    margin-top: 10pt;
+}
+.checklist {
+    background: #f8f9fa;
+    padding: 15pt;
+    border-radius: 8pt;
+    margin: 15pt 0;
+}
+.checklist-item {
+    padding: 8pt 0;
+    border-bottom: 1px dashed #dee2e6;
+}
+.checklist-item:last-child {
+    border-bottom: none;
+}
+.check-icon {
+    color: #198754;
+    font-weight: bold;
+    margin-right: 10pt;
+}
+.footer {
+    text-align: center;
+    color: #6c757d;
+    font-size: 9pt;
+    margin-top: 40pt;
+    padding-top: 15pt;
+    border-top: 1px solid #dee2e6;
+}
+</style>
+</head>
+<body>
+
+<!-- ==================== PORTADA ==================== -->
+<div class="cover">
+    <div class="cover-logo">📋</div>
+    <h1>Guía de Usuario</h1>
+    <p class="cover-subtitle">Sistema de Gestión de Diplomas COLMED</p>
+    <p style="font-size: 14pt; color: #495057; margin-top: 30pt;">
+        <strong>Módulo de Administración de Usuarios</strong>
+    </p>
+    <p class="cover-version">
+        Versión 1.0 | Enero 2026
+    </p>
+</div>
+
+<div class="page-break"></div>
+
+<!-- ==================== BIENVENIDA ==================== -->
+<h2>👋 Bienvenido al Sistema</h2>
+
+<p>Esta guía te ayudará a entender cómo funciona el acceso al Sistema de Diplomas COLMED y las acciones disponibles según tu rol.</p>
+
+<div class="workflow-box">
+    <div class="workflow-title">¿Cómo funciona el acceso?</div>
+    <p style="margin: 0;">El sistema utiliza un modelo de <strong>autorización previa</strong>.<br>
+    Un administrador debe autorizarte antes de que puedas crear tu cuenta.</p>
+</div>
+
+<h3>Hay dos tipos de usuarios:</h3>
+
+<table style="width: 100%; border-spacing: 15pt;">
+<tr>
+<td style="width: 50%; vertical-align: top;">
+    <div class="role-card">
+        <div class="role-icon">👤</div>
+        <div class="role-title">Usuario</div>
+        <div class="role-desc">
+            Puede cargar diplomas y gestionar convocatorias según los permisos asignados.
+        </div>
+    </div>
+</td>
+<td style="width: 50%; vertical-align: top;">
+    <div class="role-card" style="border-color: #0d6efd;">
+        <div class="role-icon">👑</div>
+        <div class="role-title">Administrador</div>
+        <div class="role-desc">
+            Todo lo anterior + puede autorizar, bloquear y eliminar usuarios del sistema.
+        </div>
+    </div>
+</td>
+</tr>
+</table>
+
+<div class="page-break"></div>
+
+<!-- ==================== FLUJO PARA NUEVOS USUARIOS ==================== -->
+<h2>🚀 Soy Nuevo: ¿Cómo accedo al sistema?</h2>
+
+<p>Si eres un usuario nuevo y necesitas acceder al sistema, sigue este flujo:</p>
+
+<div class="flow-step">
+    <strong>PASO 1</strong><br>
+    📞 Contacta al administrador del sistema<br>
+    <span style="color: #6c757d; font-size: 10pt;">Solicita que te agregue a la lista de usuarios autorizados</span>
+</div>
+
+<div class="flow-arrow">⬇️</div>
+
+<div class="flow-step">
+    <strong>PASO 2</strong><br>
+    ⏳ Espera la confirmación<br>
+    <span style="color: #6c757d; font-size: 10pt;">El administrador te avisará cuando estés autorizado</span>
+</div>
+
+<div class="flow-arrow">⬇️</div>
+
+<div class="flow-step">
+    <strong>PASO 3</strong><br>
+    📝 Regístrate en el sistema<br>
+    <span style="color: #6c757d; font-size: 10pt;">Ingresa a registro.php y crea tu cuenta con tu RUT</span>
+</div>
+
+<div class="flow-arrow">⬇️</div>
+
+<div class="flow-step flow-step-active">
+    <strong>¡LISTO!</strong><br>
+    ✅ Ya puedes iniciar sesión<br>
+    <span style="font-size: 10pt;">Usa tu RUT y contraseña para acceder</span>
+</div>
+
+<div class="tip-box">
+    <div class="tip-title">💡 Tip</div>
+    Tu RUT debe estar en formato sin puntos y con guión. Ejemplo: <strong>12345678-9</strong>
+</div>
+
+<div class="page-break"></div>
+
+<!-- ==================== PROCESO DE REGISTRO ==================== -->
+<h2>📝 Cómo Registrarse</h2>
+
+<h3>Pantalla de Registro</h3>
+
+<div class="screen-mock">
+    <div class="screen-header">
+        📋 Registro de Usuario
+    </div>
+    <div class="screen-body">
+        <p style="margin-top: 0;"><strong>Ingrese sus datos para crear su cuenta</strong></p>
+
+        <label style="font-size: 10pt; color: #495057;">RUT *</label>
+        <div class="form-field">12345678-9</div>
+
+        <label style="font-size: 10pt; color: #495057;">Nombre Completo *</label>
+        <div class="form-field">Juan Pérez González</div>
+
+        <label style="font-size: 10pt; color: #495057;">Email *</label>
+        <div class="form-field">juan.perez@ejemplo.com</div>
+
+        <label style="font-size: 10pt; color: #495057;">Contraseña *</label>
+        <div class="form-field">••••••••</div>
+
+        <label style="font-size: 10pt; color: #495057;">Confirmar Contraseña *</label>
+        <div class="form-field">••••••••</div>
+
+        <div style="text-align: center; margin-top: 15pt;">
+            <span class="button-demo btn-blue">Registrarse</span>
+        </div>
+    </div>
+</div>
+
+<h3>¿Qué puede pasar?</h3>
+
+<table class="comparison-table">
+    <tr>
+        <th>Situación</th>
+        <th>Mensaje</th>
+        <th>Qué hacer</th>
+    </tr>
+    <tr>
+        <td>✅ RUT autorizado</td>
+        <td><span class="badge badge-green">Registro exitoso</span></td>
+        <td>Puedes iniciar sesión</td>
+    </tr>
+    <tr>
+        <td>❌ RUT no autorizado</td>
+        <td><span class="badge badge-red">Acceso denegado</span></td>
+        <td>Contacta al administrador</td>
+    </tr>
+    <tr>
+        <td>🔒 RUT bloqueado</td>
+        <td><span class="badge badge-red">Usuario bloqueado</span></td>
+        <td>Contacta al administrador</td>
+    </tr>
+    <tr>
+        <td>⚠️ Ya registrado</td>
+        <td><span class="badge badge-yellow">Ya existe cuenta</span></td>
+        <td>Usa "Iniciar sesión"</td>
+    </tr>
+</table>
+
+<div class="page-break"></div>
+
+<!-- ==================== GUÍA PARA ADMINISTRADORES ==================== -->
+<h2>👑 Guía para Administradores</h2>
+
+<p>Si eres administrador, tienes acceso al panel de gestión de usuarios donde puedes:</p>
+
+<div class="checklist">
+    <div class="checklist-item"><span class="check-icon">✓</span> Autorizar nuevos usuarios</div>
+    <div class="checklist-item"><span class="check-icon">✓</span> Ver el estado de todos los usuarios</div>
+    <div class="checklist-item"><span class="check-icon">✓</span> Bloquear/Activar usuarios</div>
+    <div class="checklist-item"><span class="check-icon">✓</span> Eliminar usuarios del sistema</div>
+</div>
+
+<h3>Cómo acceder al panel</h3>
+
+<div class="step">
+    <span class="step-number">1</span>
+    <span class="step-title">Inicia sesión con tu cuenta de administrador</span>
+    <div class="step-desc">Usa tu RUT y contraseña en la página de login</div>
+</div>
+
+<div class="step">
+    <span class="step-number">2</span>
+    <span class="step-title">Haz clic en "Admin Usuarios" en el menú superior</span>
+    <div class="step-desc">Esta opción solo aparece para administradores</div>
+</div>
+
+<div class="step">
+    <span class="step-number">3</span>
+    <span class="step-title">¡Ya estás en el panel de administración!</span>
+    <div class="step-desc">Verás las estadísticas y la lista de usuarios</div>
+</div>
+
+<div class="page-break"></div>
+
+<!-- ==================== PANEL DE ADMINISTRACIÓN ==================== -->
+<h2>📊 Panel de Administración</h2>
+
+<h3>Vista General</h3>
+
+<div class="screen-mock">
+    <div class="screen-header">
+        👥 Administrar Usuarios
+    </div>
+    <div class="screen-body">
+        <table style="width: 100%; text-align: center; margin-bottom: 20pt;">
+            <tr>
+                <td style="padding: 15pt; background: linear-gradient(135deg, #667eea 0%, #764ba2 100%); color: white; border-radius: 8pt; width: 33%;">
+                    <div style="font-size: 24pt; font-weight: bold;">15</div>
+                    <div>Total Autorizados</div>
+                </td>
+                <td style="width: 2%;"></td>
+                <td style="padding: 15pt; background: linear-gradient(135deg, #11998e 0%, #38ef7d 100%); color: white; border-radius: 8pt; width: 33%;">
+                    <div style="font-size: 24pt; font-weight: bold;">12</div>
+                    <div>Ya Registrados</div>
+                </td>
+                <td style="width: 2%;"></td>
+                <td style="padding: 15pt; background: linear-gradient(135deg, #f093fb 0%, #f5576c 100%); color: white; border-radius: 8pt; width: 33%;">
+                    <div style="font-size: 24pt; font-weight: bold;">3</div>
+                    <div>Pendientes</div>
+                </td>
+            </tr>
+        </table>
+
+        <p style="color: #6c757d; font-size: 10pt;">Estos indicadores te muestran el estado general de los usuarios del sistema.</p>
+    </div>
+</div>
+
+<h3>¿Qué significa cada indicador?</h3>
+
+<table class="comparison-table">
+    <tr>
+        <th style="background: #667eea;">Total Autorizados</th>
+        <th style="background: #11998e;">Ya Registrados</th>
+        <th style="background: #f5576c;">Pendientes</th>
+    </tr>
+    <tr>
+        <td>Usuarios que has agregado a la lista de permitidos</td>
+        <td>Usuarios que ya crearon su cuenta y pueden acceder</td>
+        <td>Usuarios autorizados que aún no se han registrado</td>
+    </tr>
+</table>
+
+<div class="page-break"></div>
+
+<!-- ==================== AUTORIZAR USUARIO ==================== -->
+<h2>➕ Cómo Autorizar un Nuevo Usuario</h2>
+
+<p>Cuando alguien te pida acceso al sistema, sigue estos pasos:</p>
+
+<div class="step">
+    <span class="step-number">1</span>
+    <span class="step-title">Ve al panel de Admin Usuarios</span>
+</div>
+
+<div class="step">
+    <span class="step-number">2</span>
+    <span class="step-title">Completa el formulario "Agregar Usuario Permitido"</span>
+    <div class="step-desc">
+        <div class="screen-mock" style="margin-top: 10pt;">
+            <div class="screen-header">➕ Agregar Usuario Permitido</div>
+            <div class="screen-body">
+                <label style="font-size: 10pt;">RUT *</label>
+                <div class="form-field">12345678-9</div>
+
+                <label style="font-size: 10pt;">Nombre Completo *</label>
+                <div class="form-field">María González Silva</div>
+
+                <label style="font-size: 10pt;">Email (opcional)</label>
+                <div class="form-field">maria@ejemplo.com</div>
+
+                <label style="font-size: 10pt;">Rol *</label>
+                <div class="form-field">
+                    <select style="border: none; background: transparent; width: 100%;">
+                        <option>Usuario</option>
+                    </select>
+                </div>
+
+                <div style="text-align: center; margin-top: 10pt;">
+                    <span class="button-demo btn-blue">➕ Agregar</span>
+                </div>
+            </div>
+        </div>
+    </div>
+</div>
+
+<div class="step">
+    <span class="step-number">3</span>
+    <span class="step-title">Notifica al usuario que ya puede registrarse</span>
+    <div class="step-desc">El usuario aparecerá en la lista con estado "Pendiente"</div>
+</div>
+
+<div class="tip-box">
+    <div class="tip-title">💡 Tip</div>
+    Selecciona el rol <strong>"Administrador"</strong> solo si la persona necesita gestionar otros usuarios.
+</div>
+
+<div class="page-break"></div>
+
+<!-- ==================== LISTA DE USUARIOS ==================== -->
+<h2>📋 Lista de Usuarios</h2>
+
+<p>En la lista puedes ver todos los usuarios autorizados y su estado actual:</p>
+
+<div class="screen-mock">
+    <div class="screen-header">📋 Lista de Usuarios Permitidos</div>
+    <div class="screen-body" style="padding: 0;">
+        <table style="width: 100%; border-collapse: collapse; font-size: 10pt;">
+            <tr style="background: #e9ecef;">
+                <th style="padding: 10pt; text-align: left;">RUT</th>
+                <th style="padding: 10pt; text-align: left;">Nombre</th>
+                <th style="padding: 10pt; text-align: center;">Rol</th>
+                <th style="padding: 10pt; text-align: center;">Estado</th>
+                <th style="padding: 10pt; text-align: center;">Registrado</th>
+                <th style="padding: 10pt; text-align: center;">Acciones</th>
+            </tr>
+            <tr>
+                <td style="padding: 10pt;"><span class="badge badge-gray">12345678-9</span></td>
+                <td style="padding: 10pt;">Juan Pérez</td>
+                <td style="padding: 10pt; text-align: center;"><span class="badge badge-red">Admin</span></td>
+                <td style="padding: 10pt; text-align: center;"><span class="badge badge-green">Activo</span></td>
+                <td style="padding: 10pt; text-align: center;"><span class="badge badge-blue">Sí</span></td>
+                <td style="padding: 10pt; text-align: center;">
+                    <span class="button-demo btn-blue" style="padding: 4pt 8pt; font-size: 9pt;">🔘</span>
+                    <span class="button-demo btn-red" style="padding: 4pt 8pt; font-size: 9pt;">👤✕</span>
+                </td>
+            </tr>
+            <tr style="background: #f8f9fa;">
+                <td style="padding: 10pt;"><span class="badge badge-gray">98765432-1</span></td>
+                <td style="padding: 10pt;">María González</td>
+                <td style="padding: 10pt; text-align: center;"><span class="badge badge-blue">Usuario</span></td>
+                <td style="padding: 10pt; text-align: center;"><span class="badge badge-green">Activo</span></td>
+                <td style="padding: 10pt; text-align: center;"><span class="badge badge-yellow">Pendiente</span></td>
+                <td style="padding: 10pt; text-align: center;">
+                    <span class="button-demo btn-blue" style="padding: 4pt 8pt; font-size: 9pt;">🔘</span>
+                    <span class="button-demo btn-outline-red" style="padding: 4pt 8pt; font-size: 9pt;">🗑️</span>
+                </td>
+            </tr>
+            <tr>
+                <td style="padding: 10pt;"><span class="badge badge-gray">11222333-4</span></td>
+                <td style="padding: 10pt;">Pedro Soto</td>
+                <td style="padding: 10pt; text-align: center;"><span class="badge badge-blue">Usuario</span></td>
+                <td style="padding: 10pt; text-align: center;"><span class="badge badge-red">Bloqueado</span></td>
+                <td style="padding: 10pt; text-align: center;"><span class="badge badge-blue">Sí</span></td>
+                <td style="padding: 10pt; text-align: center;">
+                    <span class="button-demo btn-red" style="padding: 4pt 8pt; font-size: 9pt;">🔘</span>
+                    <span class="button-demo btn-red" style="padding: 4pt 8pt; font-size: 9pt;">👤✕</span>
+                </td>
+            </tr>
+        </table>
+    </div>
+</div>
+
+<h3>Significado de los badges</h3>
+
+<table class="comparison-table">
+    <tr>
+        <th>Badge</th>
+        <th>Significado</th>
+    </tr>
+    <tr>
+        <td><span class="badge badge-green">Activo</span></td>
+        <td>El usuario puede acceder al sistema</td>
+    </tr>
+    <tr>
+        <td><span class="badge badge-red">Bloqueado</span></td>
+        <td>El usuario no puede acceder (suspendido)</td>
+    </tr>
+    <tr>
+        <td><span class="badge badge-blue">Sí</span></td>
+        <td>El usuario ya creó su cuenta</td>
+    </tr>
+    <tr>
+        <td><span class="badge badge-yellow">Pendiente</span></td>
+        <td>Autorizado pero aún no se ha registrado</td>
+    </tr>
+</table>
+
+<div class="page-break"></div>
+
+<!-- ==================== ACCIONES ==================== -->
+<h2>⚡ Acciones Disponibles</h2>
+
+<h3>🔘 Activar / Bloquear</h3>
+
+<p>Usa este botón para cambiar el estado de acceso de un usuario.</p>
+
+<table class="comparison-table">
+    <tr>
+        <th>Si está...</th>
+        <th>Al hacer clic...</th>
+        <th>Resultado</th>
+    </tr>
+    <tr>
+        <td><span class="badge badge-green">Activo</span></td>
+        <td>Se bloquea</td>
+        <td>El usuario ya no puede iniciar sesión</td>
+    </tr>
+    <tr>
+        <td><span class="badge badge-red">Bloqueado</span></td>
+        <td>Se activa</td>
+        <td>El usuario recupera el acceso</td>
+    </tr>
+</table>
+
+<div class="tip-box">
+    <div class="tip-title">💡 ¿Cuándo usar bloquear?</div>
+    <ul style="margin: 5pt 0 0 0; padding-left: 20pt;">
+        <li>Suspensiones temporales</li>
+        <li>Usuario de vacaciones o licencia</li>
+        <li>Mientras investigas un problema</li>
+    </ul>
+</div>
+
+<hr style="border: none; border-top: 1px dashed #dee2e6; margin: 20pt 0;">
+
+<h3>🗑️ Eliminar Usuario Pendiente</h3>
+
+<p><strong>Solo aparece para usuarios que NO se han registrado.</strong></p>
+
+<div class="warning-box">
+    <div class="warning-title">⚠️ ¿Qué hace?</div>
+    Elimina al usuario de la lista de autorizados. Si después quiere registrarse, deberás agregarlo de nuevo.
+</div>
+
+<hr style="border: none; border-top: 1px dashed #dee2e6; margin: 20pt 0;">
+
+<h3>👤✕ Eliminar Usuario Registrado</h3>
+
+<p><strong>Solo aparece para usuarios que YA se registraron.</strong></p>
+
+<div class="danger-box">
+    <div class="danger-title">🚨 ¡Cuidado! Esta acción es irreversible</div>
+    <ul style="margin: 5pt 0 0 0; padding-left: 20pt;">
+        <li>Elimina la cuenta del usuario</li>
+        <li>Elimina su autorización</li>
+        <li>Pierde todo acceso al sistema</li>
+        <li>No se puede deshacer</li>
+    </ul>
+</div>
+
+<p>Al hacer clic, verás un modal de confirmación:</p>
+
+<div class="screen-mock">
+    <div class="screen-header" style="background: #dc3545;">
+        ⚠️ Eliminar Usuario Registrado
+    </div>
+    <div class="screen-body">
+        <div class="warning-box">
+            <strong>¡Atención!</strong> Esta acción eliminará completamente al usuario del sistema.
+        </div>
+        <p>¿Está seguro de eliminar al usuario:</p>
+        <ul>
+            <li><strong>Nombre:</strong> Pedro Soto Muñoz</li>
+            <li><strong>RUT:</strong> 11222333-4</li>
+        </ul>
+        <p style="color: #dc3545;">Se eliminará tanto su cuenta como su permiso de acceso. Esta acción no se puede deshacer.</p>
+        <div style="text-align: right; margin-top: 15pt;">
+            <span class="button-demo btn-gray">✕ Cancelar</span>
+            <span class="button-demo btn-red">🗑️ Eliminar Usuario</span>
+        </div>
+    </div>
+</div>
+
+<div class="page-break"></div>
+
+<!-- ==================== FLUJO COMPLETO ==================== -->
+<h2>🔄 Flujo Completo: De Inicio a Fin</h2>
+
+<div style="text-align: center;">
+
+<div class="flow-step" style="background: #e3f2fd; border-color: #2196f3;">
+    <strong>👑 ADMINISTRADOR</strong><br>
+    Agrega RUT + datos del nuevo usuario
+</div>
+
+<div class="flow-arrow">⬇️</div>
+
+<div class="flow-step" style="background: #fff8e1; border-color: #ffc107;">
+    <strong>⏳ ESTADO: PENDIENTE</strong><br>
+    Usuario autorizado, esperando registro
+</div>
+
+<div class="flow-arrow">⬇️</div>
+
+<div class="flow-step" style="background: #e8f5e9; border-color: #4caf50;">
+    <strong>👤 USUARIO</strong><br>
+    Se registra con su RUT y crea contraseña
+</div>
+
+<div class="flow-arrow">⬇️</div>
+
+<div class="flow-step" style="background: #e8f5e9; border-color: #4caf50;">
+    <strong>✅ ESTADO: REGISTRADO</strong><br>
+    Usuario con cuenta activa
+</div>
+
+<div class="flow-arrow">⬇️</div>
+
+<table style="width: 100%; margin-top: 10pt;">
+<tr>
+<td style="width: 48%; vertical-align: top;">
+    <div class="flow-step" style="background: #ffebee; border-color: #f44336;">
+        <strong>🔒 BLOQUEADO</strong><br>
+        <span style="font-size: 10pt;">Admin puede bloquear temporalmente</span>
+    </div>
+</td>
+<td style="width: 4%;"></td>
+<td style="width: 48%; vertical-align: top;">
+    <div class="flow-step" style="background: #fce4ec; border-color: #e91e63;">
+        <strong>🗑️ ELIMINADO</strong><br>
+        <span style="font-size: 10pt;">Admin puede eliminar permanentemente</span>
+    </div>
+</td>
+</tr>
+</table>
+
+</div>
+
+<div class="page-break"></div>
+
+<!-- ==================== RESUMEN RÁPIDO ==================== -->
+<h2>📌 Resumen Rápido</h2>
+
+<h3>Para Usuarios</h3>
+
+<div class="checklist">
+    <div class="checklist-item"><span class="check-icon">1.</span> Solicita autorización al administrador</div>
+    <div class="checklist-item"><span class="check-icon">2.</span> Espera confirmación</div>
+    <div class="checklist-item"><span class="check-icon">3.</span> Regístrate en registro.php con tu RUT</div>
+    <div class="checklist-item"><span class="check-icon">4.</span> Inicia sesión con tu RUT y contraseña</div>
+</div>
+
+<h3>Para Administradores</h3>
+
+<table class="comparison-table">
+    <tr>
+        <th>Quiero...</th>
+        <th>Debo...</th>
+    </tr>
+    <tr>
+        <td>Autorizar un nuevo usuario</td>
+        <td>Agregar su RUT en el formulario</td>
+    </tr>
+    <tr>
+        <td>Suspender temporalmente</td>
+        <td>Usar el botón de toggle (Bloquear)</td>
+    </tr>
+    <tr>
+        <td>Reactivar un usuario</td>
+        <td>Usar el botón de toggle (Activar)</td>
+    </tr>
+    <tr>
+        <td>Quitar autorización (no registrado)</td>
+        <td>Clic en 🗑️ (papelera)</td>
+    </tr>
+    <tr>
+        <td>Eliminar completamente (registrado)</td>
+        <td>Clic en 👤✕ y confirmar</td>
+    </tr>
+</table>
+
+<div class="warning-box">
+    <div class="warning-title">⚠️ Recuerda</div>
+    No puedes eliminarte a ti mismo del sistema. Siempre debe haber al menos un administrador activo.
+</div>
+
+<!-- ==================== PIE DE PÁGINA ==================== -->
+<div class="footer">
+    <p><strong>Sistema de Diplomas COLMED</strong> | Guía de Usuario v1.0</p>
+    <p>¿Necesitas ayuda? Contacta al área de sistemas</p>
+</div>
+
+</body>
+</html>

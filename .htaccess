@@ -1,0 +1,27 @@
+# Sistema de Gestión de Diplomas COLMED
+# Configuración Apache - URLs limpias
+
+RewriteEngine On
+
+# Ocultar extensión .php de las URLs
+RewriteCond %{REQUEST_FILENAME} !-d
+RewriteCond %{REQUEST_FILENAME}\.php -f
+RewriteRule ^(.*)$ $1.php [L]
+
+# Página por defecto
+DirectoryIndex index.php
+
+# Seguridad: Ocultar listado de directorios
+Options -Indexes
+
+# Seguridad: Bloquear acceso a archivos sensibles
+<FilesMatch "\.(env|log|sql|md|json|lock)$">
+    Order allow,deny
+    Deny from all
+</FilesMatch>
+
+# Proteger directorio de configuración
+<FilesMatch "^(config|security|auth)\.php$">
+    Order allow,deny
+    Deny from all
+</FilesMatch>

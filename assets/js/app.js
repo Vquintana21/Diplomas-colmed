@@ -1,10 +1,102 @@
 /**
  * Sistema de Carga Masiva de Diplomas
  * JavaScript Principal - Con soporte de Convocatorias
- * VERSION: 2026-01-29-FIX2 (codificación corregida)
+ * VERSION: 2026-01-29-FIX3 (AppUtils global)
  */
-// console.log('app.js VERSION: 2026-01-29-FIX2 cargado');
 
+// ============================================
+// UTILIDADES GLOBALES (disponibles inmediatamente)
+// ============================================
+window.AppUtils = (function() {
+    'use strict';
+
+    function mostrarModal(texto) {
+        var textElement = document.getElementById('textoCargando');
+        if (textElement) {
+            textElement.textContent = texto || 'Procesando...';
+        }
+        var modalElement = document.getElementById('modalCargando');
+        if (modalElement) {
+            var modal = bootstrap.Modal.getOrCreateInstance(modalElement);
+            modal.show();
+        }
+    }
+
+    function ocultarModal() {
+        var modalElement = document.getElementById('modalCargando');
+        if (!modalElement) return;
+
+        var modal = bootstrap.Modal.getInstance(modalElement);
+        if (modal) {
+            modal.hide();
+        }
+
+        setTimeout(function() {
+            document.body.classList.remove('modal-open');
+            document.body.style.removeProperty('padding-right');
+            document.body.style.removeProperty('overflow');
+
+            var backdrops = document.querySelectorAll('.modal-backdrop');
+            backdrops.forEach(function(backdrop) {
+                backdrop.remove();
+            });
+
+            modalElement.classList.remove('show');
+            modalElement.style.display = 'none';
+            modalElement.setAttribute('aria-hidden', 'true');
+            modalElement.removeAttribute('aria-modal');
+            modalElement.removeAttribute('role');
+        }, 150);
+    }
+
+    function mostrarAlerta(tipo, mensaje, contenedor) {
+        var alertDiv = document.createElement('div');
+        alertDiv.className = 'alert alert-' + tipo + ' alert-dismissible fade show';
+        alertDiv.innerHTML = '<i class="bi bi-' + (tipo === 'success' ? 'check-circle' : 'exclamation-circle') + ' me-2"></i>' +
+            mensaje + '<button type="button" class="btn-close" data-bs-dismiss="alert"></button>';
+
+        var container = document.getElementById(contenedor || 'alertaGlobal');
+        if (container) {
+            container.appendChild(alertDiv);
+            setTimeout(function() { alertDiv.remove(); }, 5000);
+        }
+    }
+
+    function ocultarAlerta(contenedor) {
+        var container = document.getElementById(contenedor || 'alertaGlobal');
+        if (container) {
+            container.innerHTML = '';
+        }
+    }
+
+    function formatBytes(bytes) {
+        if (bytes === 0) return '0 Bytes';
+        if (bytes < 1024) return bytes + ' bytes';
+        if (bytes < 1024 * 1024) return (bytes / 1024).toFixed(1) + ' KB';
+        return (bytes / (1024 * 1024)).toFixed(1) + ' MB';
+    }
+
+    function escapeHtml(text) {
+        if (!text) return '';
+        var div = document.createElement('div');
+        div.appendChild(document.createTextNode(text));
+        return div.innerHTML;
+    }
+
+    // Exponer funciones públicas
+    return {
+        mostrarModal: mostrarModal,
+        ocultarModal: ocultarModal,
+        mostrarAlerta: mostrarAlerta,
+        ocultarAlerta: ocultarAlerta,
+        formatBytes: formatBytes,
+        escapeHtml: escapeHtml
+    };
+})();
+
+// ============================================
+// MÓDULO DE CARGA DE DIPLOMAS (solo para index.php)
+// ============================================
 (function() {
     'use strict';
 
@@ -24,18 +116,24 @@
     var btnProcesar;
     
     // ============================================
-    // INICIALIZACION
+    // INICIALIZACION (solo para página de carga de diplomas)
     // ============================================
     function init() {
+        // Solo inicializar en la página de carga de diplomas (index.php)
+        var pagina = document.body.getAttribute('data-pagina');
+        if (pagina !== 'carga-diplomas') {
+            return; // No es la página de diplomas, no inicializar
+        }
+
         uploadZone = document.getElementById('uploadZone');
         archivoInput = document.getElementById('archivoInput');
         formCarga = document.getElementById('formCarga');
         btnProcesar = document.getElementById('btnProcesar');
-        
-        if (!uploadZone || !formCarga) return; // No estamos en la página de carga
-        
+
+        if (!uploadZone || !formCarga) return;
+
         document.getElementById('sessionId').value = sessionId;
-        
+
         setupUploadZone();
         setupFormSubmit();
         setupButtons();
@@ -605,53 +703,23 @@
         }
     }
     
+    // Usar funciones de AppUtils (definidas globalmente al inicio del archivo)
     function mostrarModalCargando(texto) {
-        document.getElementById('textoCargando').textContent = texto || 'Procesando...';
-        var modal = bootstrap.Modal.getOrCreateInstance(document.getElementById('modalCargando'));
-        modal.show();
+        AppUtils.mostrarModal(texto);
     }
-    
+
     function ocultarModalCargando() {
-        var modalElement = document.getElementById('modalCargando');
-        var modal = bootstrap.Modal.getInstance(modalElement);
-        
-        if (modal) {
-            modal.hide();
-        }
-        
-        setTimeout(function() {
-            document.body.classList.remove('modal-open');
-            document.body.style.removeProperty('padding-right');
-            document.body.style.removeProperty('overflow');
-            
-            var backdrops = document.querySelectorAll('.modal-backdrop');
-            backdrops.forEach(function(backdrop) {
-                backdrop.remove();
-            });
-            
-            modalElement.classList.remove('show');
-            modalElement.style.display = 'none';
-            modalElement.setAttribute('aria-hidden', 'true');
-            modalElement.removeAttribute('aria-modal');
-            modalElement.removeAttribute('role');
-        }, 150);
+        AppUtils.ocultarModal();
     }
-    
+
     function formatBytes(bytes) {
-        if (bytes === 0) return '0 Bytes';
-        var k = 1024;
-        var sizes = ['Bytes', 'KB', 'MB'];
-        var i = Math.floor(Math.log(bytes) / Math.log(k));
-        return parseFloat((bytes / Math.pow(k, i)).toFixed(2)) + ' ' + sizes[i];
+        return AppUtils.formatBytes(bytes);
     }
-    
+
     function escapeHtml(text) {
-        if (!text) return '';
-        var div = document.createElement('div');
-        div.appendChild(document.createTextNode(text));
-        return div.innerHTML;
+        return AppUtils.escapeHtml(text);
     }
-    
+
     function truncar(texto, maxLength) {
         if (!texto) return '';
         if (texto.length <= maxLength) return texto;
@@ -662,5 +730,5 @@
     // INICIAR
     // ============================================
     document.addEventListener('DOMContentLoaded', init);
-    
+
 })();

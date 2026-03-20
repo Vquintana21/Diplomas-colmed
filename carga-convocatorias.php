@@ -90,14 +90,25 @@ $conn->close();
             </div>
             
             <div class="card-body p-4">
-                
+
                 <!-- Indicador de Pasos -->
-                <div class="step-indicator">
-                    <div class="step active" id="stepIndicator1">1</div>
-                    <div class="line" id="lineIndicator1"></div>
-                    <div class="step" id="stepIndicator2">2</div>
-                    <div class="line" id="lineIndicator2"></div>
-                    <div class="step" id="stepIndicator3">3</div>
+                <div class="steps-container mb-4">
+                    <div class="d-flex justify-content-center">
+                        <div class="step active" id="stepIndicator1">
+                            <div class="step-number">1</div>
+                            <div class="step-label">Subir Archivo</div>
+                        </div>
+                        <div class="step-line" id="lineIndicator1"></div>
+                        <div class="step" id="stepIndicator2">
+                            <div class="step-number">2</div>
+                            <div class="step-label">Validar Datos</div>
+                        </div>
+                        <div class="step-line" id="lineIndicator2"></div>
+                        <div class="step" id="stepIndicator3">
+                            <div class="step-number">3</div>
+                            <div class="step-label">Confirmar</div>
+                        </div>
+                    </div>
                 </div>
                 
                 <!-- ========================================= -->
@@ -386,13 +397,14 @@ $conn->close();
     </div>
     
     <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.2/dist/js/bootstrap.bundle.min.js"></script>
+    <!-- Utilidades compartidas (AppUtils) -->
+    <script src="assets/js/app.js?v=20260130"></script>
     <script>
     (function() {
         // Variables globales
         var sessionId = document.getElementById('sessionId').value;
         var datosRegistros = [];
         var registrosRechazados = [];
-        var modalCargando = new bootstrap.Modal(document.getElementById('modalCargando'));
         
         // Elementos DOM
         var uploadZone = document.getElementById('uploadZone');
@@ -476,14 +488,15 @@ $conn->close();
             
             var xhr = new XMLHttpRequest();
             xhr.open('POST', 'procesar-carga-convocatorias.php', true);
-            
+            xhr.timeout = 60000; // 60 segundos timeout
+
             xhr.onload = function() {
                 ocultarModal();
-                
+
                 if (xhr.status === 200) {
                     try {
                         var response = JSON.parse(xhr.responseText);
-                        
+
                         if (response.success) {
                             datosRegistros = response.registros;
                             mostrarPreview(response);
@@ -498,12 +511,17 @@ $conn->close();
                     mostrarAlerta('danger', 'Error de conexión con el servidor');
                 }
             };
-            
+
             xhr.onerror = function() {
                 ocultarModal();
                 mostrarAlerta('danger', 'Error de conexión');
             };
-            
+
+            xhr.ontimeout = function() {
+                ocultarModal();
+                mostrarAlerta('danger', 'El servidor tardó demasiado en responder. Intente nuevamente.');
+            };
+
             xhr.send(formData);
         });
         
@@ -646,10 +664,11 @@ $conn->close();
             
             var xhr = new XMLHttpRequest();
             xhr.open('POST', 'confirmar-carga-convocatorias.php', true);
-            
+            xhr.timeout = 60000; // 60 segundos timeout
+
             xhr.onload = function() {
                 ocultarModal();
-                
+
                 if (xhr.status === 200) {
                     try {
                         var response = JSON.parse(xhr.responseText);
@@ -661,12 +680,17 @@ $conn->close();
                     mostrarAlerta('danger', 'Error de conexión');
                 }
             };
-            
+
             xhr.onerror = function() {
                 ocultarModal();
                 mostrarAlerta('danger', 'Error de conexión');
             };
-            
+
+            xhr.ontimeout = function() {
+                ocultarModal();
+                mostrarAlerta('danger', 'El servidor tardó demasiado en responder. Intente nuevamente.');
+            };
+
             xhr.send(formData);
         }
         
@@ -756,39 +780,31 @@ $conn->close();
             location.reload();
         }
         
+        // Usar funciones de AppUtils (de app.js)
         function mostrarModal(texto) {
-            document.getElementById('textoCargando').textContent = texto;
-            modalCargando.show();
+            AppUtils.mostrarModal(texto);
         }
-        
+
         function ocultarModal() {
-            modalCargando.hide();
+            AppUtils.ocultarModal();
         }
-        
+
         function mostrarAlerta(tipo, mensaje) {
+            // Alerta local para esta página (alertaGlobal)
             var alertDiv = document.createElement('div');
             alertDiv.className = 'alert alert-' + tipo + ' alert-dismissible fade show';
             alertDiv.innerHTML = '<i class="bi bi-' + (tipo === 'success' ? 'check-circle' : 'exclamation-circle') + ' me-2"></i>' +
                 mensaje + '<button type="button" class="btn-close" data-bs-dismiss="alert"></button>';
-            
             document.getElementById('alertaGlobal').appendChild(alertDiv);
-            
-            setTimeout(function() {
-                alertDiv.remove();
-            }, 5000);
+            setTimeout(function() { alertDiv.remove(); }, 5000);
         }
-        
+
         function formatearTamano(bytes) {
-            if (bytes < 1024) return bytes + ' bytes';
-            if (bytes < 1024 * 1024) return (bytes / 1024).toFixed(1) + ' KB';
-            return (bytes / (1024 * 1024)).toFixed(1) + ' MB';
+            return AppUtils.formatBytes(bytes);
         }
-        
+
         function escapeHtml(text) {
-            if (!text) return '';
-            var div = document.createElement('div');
-            div.appendChild(document.createTextNode(text));
-            return div.innerHTML;
+            return AppUtils.escapeHtml(text);
         }
         
     })();
